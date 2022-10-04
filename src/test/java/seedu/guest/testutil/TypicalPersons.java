@@ -62,15 +62,15 @@ public class TypicalPersons {
     /**
      * Returns an {@code AddressBook} with all the typical persons.
      */
-    public static GuestBook getTypicalAddressBook() {
+    public static GuestBook getTypicalGuestBook() {
         GuestBook ab = new GuestBook();
-        for (Guest guest : getTypicalPersons()) {
+        for (Guest guest : getTypicalGuests()) {
             ab.addGuest(guest);
         }
         return ab;
     }
 
-    public static List<Guest> getTypicalPersons() {
+    public static List<Guest> getTypicalGuests() {
         return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
     }
 }

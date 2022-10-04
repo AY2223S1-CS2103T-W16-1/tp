@@ -25,8 +25,8 @@ public class JsonSerializableGuestBookTest {
         JsonSerializableGuestBook dataFromFile = JsonUtil.readJsonFile(TYPICAL_PERSONS_FILE,
                 JsonSerializableGuestBook.class).get();
         GuestBook guestBookFromFile = dataFromFile.toModelType();
-        GuestBook typicalPersonsGuestBook = TypicalPersons.getTypicalAddressBook();
-        assertEquals(guestBookFromFile, typicalPersonsGuestBook);
+        GuestBook typicalGuestBook = TypicalPersons.getTypicalGuestBook();
+        assertEquals(guestBookFromFile, typicalGuestBook);
     }
 
     @Test

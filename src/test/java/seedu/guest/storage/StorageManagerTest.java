@@ -2,7 +2,7 @@ package seedu.guest.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static seedu.guest.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.guest.testutil.TypicalPersons.getTypicalGuestBook;
 
 import java.nio.file.Path;
 
@@ -20,13 +20,13 @@ public class StorageManagerTest {
     @TempDir
     public Path testFolder;
 
-    private StorageManager storageManager;
+    private StorageManager hotelStorageManager;
 
     @BeforeEach
     public void setUp() {
-        JsonGuestBookStorage addressBookStorage = new JsonGuestBookStorage(getTempFilePath("ab"));
+        JsonGuestBookStorage GuestBookStorage = new JsonGuestBookStorage(getTempFilePath("ab"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
-        storageManager = new StorageManager(addressBookStorage, userPrefsStorage);
+        hotelStorageManager = new StorageManager(GuestBookStorage, userPrefsStorage);
     }
 
     private Path getTempFilePath(String fileName) {
@@ -42,8 +42,8 @@ public class StorageManagerTest {
          */
         UserPrefs original = new UserPrefs();
         original.setGuiSettings(new GuiSettings(300, 600, 4, 6));
-        storageManager.saveUserPrefs(original);
-        UserPrefs retrieved = storageManager.readUserPrefs().get();
+        hotelStorageManager.saveUserPrefs(original);
+        UserPrefs retrieved = hotelStorageManager.readUserPrefs().get();
         assertEquals(original, retrieved);
     }
 
@@ -54,15 +54,15 @@ public class StorageManagerTest {
          * {@link JsonAddressBookStorage} class.
          * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBookStorageTest} class.
          */
-        GuestBook original = getTypicalAddressBook();
-        storageManager.saveGuestBook(original);
-        ReadOnlyGuestBook retrieved = storageManager.readGuestBook().get();
+        GuestBook original = getTypicalGuestBook();
+        hotelStorageManager.saveGuestBook(original);
+        ReadOnlyGuestBook retrieved = hotelStorageManager.readGuestBook().get();
         assertEquals(original, new GuestBook(retrieved));
     }
 
     @Test
     public void getAddressBookFilePath() {
-        assertNotNull(storageManager.getGuestBookFilePath());
+        assertNotNull(hotelStorageManager.getGuestBookFilePath());
     }
 
 }
