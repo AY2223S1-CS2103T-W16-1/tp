@@ -3,7 +3,10 @@ package seedu.guest.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.guest.testutil.Assert.assertThrows;
-import static seedu.guest.testutil.TypicalPersons.*;
+import static seedu.guest.testutil.TypicalPersons.HOON;
+import static seedu.guest.testutil.TypicalPersons.ALICE;
+import static seedu.guest.testutil.TypicalPersons.IDA;
+import static seedu.guest.testutil.TypicalPersons.getTypicalGuestBook;
 
 import java.io.IOException;
 import java.nio.file.Path;
