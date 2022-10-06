@@ -13,7 +13,7 @@ import seedu.guest.model.UserPrefs;
 public class ClearCommandTest {
 
     @Test
-    public void execute_emptyAddressBook_success() {
+    public void execute_emptyGuestBook_success() {
         Model model = new ModelManager();
         Model expectedModel = new ModelManager();
 
@@ -21,9 +21,9 @@ public class ClearCommandTest {
     }
 
     @Test
-    public void execute_nonEmptyAddressBook_success() {
-        Model model = new ModelManager(getTypicalGuestBook(), new UserPrefs());
-        Model expectedModel = new ModelManager(getTypicalGuestBook(), new UserPrefs());
+    public void execute_nonEmptyGuestBook_success() {
+        Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         expectedModel.setGuestBook(new GuestBook());
 
         assertCommandSuccess(new ClearCommand(), model, ClearCommand.MESSAGE_SUCCESS, expectedModel);
