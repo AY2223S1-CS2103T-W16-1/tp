@@ -83,5 +83,4 @@ public class GuestPrefs implements ReadOnlyGuestPrefs {
         sb.append("\nLocal data file location : " + guestBookFilePath);
         return sb.toString();
     }
-
 }
