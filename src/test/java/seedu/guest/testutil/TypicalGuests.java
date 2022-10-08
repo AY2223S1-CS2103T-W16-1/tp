@@ -64,7 +64,7 @@ public class TypicalGuests {
     private TypicalGuests() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical persons.
+     * Returns an {@code AddressBook} with all the typical guests.
      */
     public static GuestBook getTypicalGuestBook() {
         GuestBook ab = new GuestBook();
