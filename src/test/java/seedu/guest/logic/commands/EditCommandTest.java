@@ -10,9 +10,9 @@ import static seedu.guest.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.guest.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.guest.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.guest.logic.commands.CommandTestUtil.showGuestAtIndex;
+import static seedu.guest.testutil.TypicalGuests.getTypicalGuestBook;
 import static seedu.guest.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.guest.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static seedu.guest.testutil.TypicalGuests.getTypicalGuestBook;
 
 import org.junit.jupiter.api.Test;
 
@@ -20,9 +20,9 @@ import seedu.guest.commons.core.Messages;
 import seedu.guest.commons.core.index.Index;
 import seedu.guest.logic.commands.EditCommand.EditGuestDescriptor;
 import seedu.guest.model.GuestBook;
+import seedu.guest.model.GuestPrefs;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
-import seedu.guest.model.GuestPrefs;
 import seedu.guest.model.guest.Guest;
 import seedu.guest.testutil.EditGuestDescriptorBuilder;
 import seedu.guest.testutil.GuestBuilder;

@@ -2,15 +2,15 @@ package seedu.guest.logic.commands;
 
 import static seedu.guest.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.guest.logic.commands.CommandTestUtil.showGuestAtIndex;
-import static seedu.guest.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.guest.testutil.TypicalGuests.getTypicalGuestBook;
+import static seedu.guest.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.guest.model.GuestPrefs;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
-import seedu.guest.model.GuestPrefs;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ListCommand.

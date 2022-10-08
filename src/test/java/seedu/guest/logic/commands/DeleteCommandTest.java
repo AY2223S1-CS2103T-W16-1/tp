@@ -5,17 +5,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.guest.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.guest.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.guest.logic.commands.CommandTestUtil.showGuestAtIndex;
+import static seedu.guest.testutil.TypicalGuests.getTypicalGuestBook;
 import static seedu.guest.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.guest.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static seedu.guest.testutil.TypicalGuests.getTypicalGuestBook;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.guest.commons.core.Messages;
 import seedu.guest.commons.core.index.Index;
+import seedu.guest.model.GuestPrefs;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
-import seedu.guest.model.GuestPrefs;
 import seedu.guest.model.guest.Guest;
 
 /**
