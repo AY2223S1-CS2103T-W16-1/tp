@@ -17,5 +17,4 @@ public class GuestPrefsTest {
         GuestPrefs userPrefs = new GuestPrefs();
         assertThrows(NullPointerException.class, () -> userPrefs.setGuestBookFilePath(null));
     }
-
 }
