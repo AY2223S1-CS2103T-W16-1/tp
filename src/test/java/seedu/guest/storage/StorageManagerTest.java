@@ -12,8 +12,8 @@ import org.junit.jupiter.api.io.TempDir;
 
 import seedu.guest.commons.core.GuiSettings;
 import seedu.guest.model.GuestBook;
-import seedu.guest.model.ReadOnlyGuestBook;
 import seedu.guest.model.GuestPrefs;
+import seedu.guest.model.ReadOnlyGuestBook;
 
 public class StorageManagerTest {
 
