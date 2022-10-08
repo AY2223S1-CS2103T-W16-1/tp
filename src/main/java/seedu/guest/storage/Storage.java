@@ -5,8 +5,8 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.guest.commons.exceptions.DataConversionException;
-import seedu.guest.model.ReadOnlyGuestBook;
 import seedu.guest.model.GuestPrefs;
+import seedu.guest.model.ReadOnlyGuestBook;
 import seedu.guest.model.ReadOnlyGuestPrefs;
 
 /**
