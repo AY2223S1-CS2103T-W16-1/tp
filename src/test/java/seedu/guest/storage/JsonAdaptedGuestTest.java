@@ -36,7 +36,7 @@ public class JsonAdaptedGuestTest {
             .collect(Collectors.toList());
 
     @Test
-    public void toModelType_validPersonDetails_returnsPerson() throws Exception {
+    public void toModelType_validPersonDetails_returnsGuest() throws Exception {
         JsonAdaptedGuest guest = new JsonAdaptedGuest(BENSON);
         assertEquals(BENSON, guest.toModelType());
     }
