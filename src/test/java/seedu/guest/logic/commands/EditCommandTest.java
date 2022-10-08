@@ -12,7 +12,7 @@ import static seedu.guest.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.guest.logic.commands.CommandTestUtil.showGuestAtIndex;
 import static seedu.guest.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.guest.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static seedu.guest.testutil.TypicalPersons.getTypicalGuestBook;
+import static seedu.guest.testutil.TypicalGuests.getTypicalGuestBook;
 
 import org.junit.jupiter.api.Test;
 
@@ -22,9 +22,9 @@ import seedu.guest.logic.commands.EditCommand.EditGuestDescriptor;
 import seedu.guest.model.GuestBook;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
-import seedu.guest.model.UserPrefs;
+import seedu.guest.model.GuestPrefs;
 import seedu.guest.model.guest.Guest;
-import seedu.guest.testutil.EditPersonDescriptorBuilder;
+import seedu.guest.testutil.EditGuestDescriptorBuilder;
 import seedu.guest.testutil.GuestBuilder;
 
 /**
@@ -32,17 +32,17 @@ import seedu.guest.testutil.GuestBuilder;
  */
 public class EditCommandTest {
 
-    private Model model = new ModelManager(getTypicalGuestBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalGuestBook(), new GuestPrefs());
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         Guest editedGuest = new GuestBuilder().build();
-        EditGuestDescriptor descriptor = new EditPersonDescriptorBuilder(editedGuest).build();
+        EditGuestDescriptor descriptor = new EditGuestDescriptorBuilder(editedGuest).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_GUEST_SUCCESS, editedGuest);
 
-        Model expectedModel = new ModelManager(new GuestBook(model.getGuestBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new GuestBook(model.getGuestBook()), new GuestPrefs());
         expectedModel.setGuest(model.getFilteredGuestList().get(0), editedGuest);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -57,13 +57,12 @@ public class EditCommandTest {
         Guest editedGuest = guestInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
 
-        EditGuestDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
+        EditGuestDescriptor descriptor = new EditGuestDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_HUSBAND).build();
         EditCommand editCommand = new EditCommand(indexLastGuest, descriptor);
-
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_GUEST_SUCCESS, editedGuest);
 
-        Model expectedModel = new ModelManager(new GuestBook(model.getGuestBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new GuestBook(model.getGuestBook()), new GuestPrefs());
         expectedModel.setGuest(lastGuest, editedGuest);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -76,7 +75,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_GUEST_SUCCESS, editedGuest);
 
-        Model expectedModel = new ModelManager(new GuestBook(model.getGuestBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new GuestBook(model.getGuestBook()), new GuestPrefs());
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -88,11 +87,11 @@ public class EditCommandTest {
         Guest guestInFilteredList = model.getFilteredGuestList().get(INDEX_FIRST_PERSON.getZeroBased());
         Guest editedGuest = new GuestBuilder(guestInFilteredList).withName(VALID_NAME_BOB).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
-                new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build());
+                new EditGuestDescriptorBuilder().withName(VALID_NAME_BOB).build());
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_GUEST_SUCCESS, editedGuest);
 
-        Model expectedModel = new ModelManager(new GuestBook(model.getGuestBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new GuestBook(model.getGuestBook()), new GuestPrefs());
         expectedModel.setGuest(model.getFilteredGuestList().get(0), editedGuest);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -101,7 +100,7 @@ public class EditCommandTest {
     @Test
     public void execute_duplicateGuestUnfilteredList_failure() {
         Guest firstGuest = model.getFilteredGuestList().get(INDEX_FIRST_PERSON.getZeroBased());
-        EditCommand.EditGuestDescriptor descriptor = new EditPersonDescriptorBuilder(firstGuest).build();
+        EditCommand.EditGuestDescriptor descriptor = new EditGuestDescriptorBuilder(firstGuest).build();
         EditCommand editCommand = new EditCommand(INDEX_SECOND_PERSON, descriptor);
 
         assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_GUEST);
@@ -114,7 +113,7 @@ public class EditCommandTest {
         // edit guest in filtered list into a duplicate in guest book
         Guest guestInList = model.getGuestBook().getGuestList().get(INDEX_SECOND_PERSON.getZeroBased());
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
-                new EditPersonDescriptorBuilder(guestInList).build());
+                new EditGuestDescriptorBuilder(guestInList).build());
 
         assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_GUEST);
     }
@@ -122,7 +121,7 @@ public class EditCommandTest {
     @Test
     public void execute_invalidGuestIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredGuestList().size() + 1);
-        EditGuestDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build();
+        EditGuestDescriptor descriptor = new EditGuestDescriptorBuilder().withName(VALID_NAME_BOB).build();
         EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_GUEST_DISPLAYED_INDEX);
@@ -140,7 +139,7 @@ public class EditCommandTest {
         assertTrue(outOfBoundIndex.getZeroBased() < model.getGuestBook().getGuestList().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,
-                new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build());
+                new EditGuestDescriptorBuilder().withName(VALID_NAME_BOB).build());
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_GUEST_DISPLAYED_INDEX);
     }

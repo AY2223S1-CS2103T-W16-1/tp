@@ -7,7 +7,7 @@ import seedu.guest.commons.core.GuiSettings;
 /**
  * Unmodifiable view of user prefs.
  */
-public interface ReadOnlyUserPrefs {
+public interface ReadOnlyGuestPrefs {
 
     GuiSettings getGuiSettings();
 

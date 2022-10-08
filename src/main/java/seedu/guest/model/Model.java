@@ -17,12 +17,12 @@ public interface Model {
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
-    void setUserPrefs(ReadOnlyUserPrefs userPrefs);
+    void setUserPrefs(ReadOnlyGuestPrefs userPrefs);
 
     /**
      * Returns the user prefs.
      */
-    ReadOnlyUserPrefs getUserPrefs();
+    ReadOnlyGuestPrefs getUserPrefs();
 
     /**
      * Returns the user prefs' GUI settings.

@@ -2,7 +2,7 @@ package seedu.guest.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static seedu.guest.testutil.TypicalPersons.getTypicalGuestBook;
+import static seedu.guest.testutil.TypicalGuests.getTypicalGuestBook;
 
 import java.nio.file.Path;
 
@@ -13,7 +13,7 @@ import org.junit.jupiter.api.io.TempDir;
 import seedu.guest.commons.core.GuiSettings;
 import seedu.guest.model.GuestBook;
 import seedu.guest.model.ReadOnlyGuestBook;
-import seedu.guest.model.UserPrefs;
+import seedu.guest.model.GuestPrefs;
 
 public class StorageManagerTest {
 
@@ -25,7 +25,7 @@ public class StorageManagerTest {
     @BeforeEach
     public void setUp() {
         JsonGuestBookStorage GuestBookStorage = new JsonGuestBookStorage(getTempFilePath("ab"));
-        JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
+        JsonGuestPrefsStorage userPrefsStorage = new JsonGuestPrefsStorage(getTempFilePath("prefs"));
         hotelStorageManager = new StorageManager(GuestBookStorage, userPrefsStorage);
     }
 
@@ -40,10 +40,10 @@ public class StorageManagerTest {
          * {@link JsonUserPrefsStorage} class.
          * More extensive testing of UserPref saving/reading is done in {@link JsonUserPrefsStorageTest} class.
          */
-        UserPrefs original = new UserPrefs();
+        GuestPrefs original = new GuestPrefs();
         original.setGuiSettings(new GuiSettings(300, 600, 4, 6));
-        hotelStorageManager.saveUserPrefs(original);
-        UserPrefs retrieved = hotelStorageManager.readUserPrefs().get();
+        hotelStorageManager.saveGuestPrefs(original);
+        GuestPrefs retrieved = hotelStorageManager.readGuestPrefs().get();
         assertEquals(original, retrieved);
     }
 

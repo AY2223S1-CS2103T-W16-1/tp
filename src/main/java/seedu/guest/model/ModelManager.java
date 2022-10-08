@@ -20,36 +20,36 @@ public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final GuestBook guestBook;
-    private final UserPrefs userPrefs;
+    private final GuestPrefs userPrefs;
     private final FilteredList<Guest> filteredGuests;
 
     /**
      * Initializes a ModelManager with the given guestList and userPrefs.
      */
-    public ModelManager(ReadOnlyGuestBook guestList, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyGuestBook guestList, ReadOnlyGuestPrefs userPrefs) {
         requireAllNonNull(guestList, userPrefs);
 
         logger.fine("Initializing with guest book: " + guestList + " and user prefs " + userPrefs);
 
         this.guestBook = new GuestBook(guestList);
-        this.userPrefs = new UserPrefs(userPrefs);
+        this.userPrefs = new GuestPrefs(userPrefs);
         filteredGuests = new FilteredList<>(this.guestBook.getGuestList());
     }
 
     public ModelManager() {
-        this(new GuestBook(), new UserPrefs());
+        this(new GuestBook(), new GuestPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
 
     @Override
-    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+    public void setUserPrefs(ReadOnlyGuestPrefs userPrefs) {
         requireNonNull(userPrefs);
         this.userPrefs.resetData(userPrefs);
     }
 
     @Override
-    public ReadOnlyUserPrefs getUserPrefs() {
+    public ReadOnlyGuestPrefs getUserPrefs() {
         return userPrefs;
     }
 

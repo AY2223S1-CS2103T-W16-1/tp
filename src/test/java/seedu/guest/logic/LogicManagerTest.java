@@ -9,7 +9,7 @@ import static seedu.guest.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.guest.logic.commands.CommandTestUtil.NUMBER_OF_GUESTS_DESC_AMY;
 import static seedu.guest.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.guest.testutil.Assert.assertThrows;
-import static seedu.guest.testutil.TypicalPersons.AMY;
+import static seedu.guest.testutil.TypicalGuests.AMY;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -26,10 +26,10 @@ import seedu.guest.logic.parser.exceptions.ParseException;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
 import seedu.guest.model.ReadOnlyGuestBook;
-import seedu.guest.model.UserPrefs;
+import seedu.guest.model.GuestPrefs;
 import seedu.guest.model.guest.Guest;
 import seedu.guest.storage.JsonGuestBookStorage;
-import seedu.guest.storage.JsonUserPrefsStorage;
+import seedu.guest.storage.JsonGuestPrefsStorage;
 import seedu.guest.storage.StorageManager;
 import seedu.guest.testutil.GuestBuilder;
 
@@ -46,7 +46,7 @@ public class LogicManagerTest {
     public void setUp() {
         JsonGuestBookStorage guestBookStorage =
                 new JsonGuestBookStorage(temporaryFolder.resolve("guestBook.json"));
-        JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
+        JsonGuestPrefsStorage userPrefsStorage = new JsonGuestPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         StorageManager storage = new StorageManager(guestBookStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
     }
@@ -74,8 +74,8 @@ public class LogicManagerTest {
         // Setup LogicManager with JsonGuestBookIoExceptionThrowingStub
         JsonGuestBookStorage guestBookStorage =
                 new JsonGuestBookIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionGuestBook.json"));
-        JsonUserPrefsStorage userPrefsStorage =
-                new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
+        JsonGuestPrefsStorage userPrefsStorage =
+                new JsonGuestPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
         StorageManager storage = new StorageManager(guestBookStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
 
@@ -131,7 +131,7 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getGuestBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getGuestBook(), new GuestPrefs());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 

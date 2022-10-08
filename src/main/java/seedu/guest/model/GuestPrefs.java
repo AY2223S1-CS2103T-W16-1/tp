@@ -11,7 +11,7 @@ import seedu.guest.commons.core.GuiSettings;
 /**
  * Represents User's preferences.
  */
-public class GuestPrefs implements ReadOnlyUserPrefs {
+public class GuestPrefs implements ReadOnlyGuestPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
     private Path guestBookFilePath = Paths.get("data" , "guestbook.json");
@@ -24,7 +24,7 @@ public class GuestPrefs implements ReadOnlyUserPrefs {
     /**
      * Creates a {@code UserPrefs} with the prefs in {@code userPrefs}.
      */
-    public GuestPrefs(ReadOnlyUserPrefs userPrefs) {
+    public GuestPrefs(ReadOnlyGuestPrefs userPrefs) {
         this();
         resetData(userPrefs);
     }
@@ -32,7 +32,7 @@ public class GuestPrefs implements ReadOnlyUserPrefs {
     /**
      * Resets the existing data of this {@code UserPrefs} with {@code newUserPrefs}.
      */
-    public void resetData(ReadOnlyUserPrefs newUserPrefs) {
+    public void resetData(ReadOnlyGuestPrefs newUserPrefs) {
         requireNonNull(newUserPrefs);
         setGuiSettings(newUserPrefs.getGuiSettings());
         setGuestBookFilePath(newUserPrefs.getGuestBookFilePath());

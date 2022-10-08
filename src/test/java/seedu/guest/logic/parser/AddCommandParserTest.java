@@ -30,8 +30,8 @@ import static seedu.guest.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.guest.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.guest.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.guest.testutil.TypicalPersons.AMY;
-import static seedu.guest.testutil.TypicalPersons.BOB;
+import static seedu.guest.testutil.TypicalGuests.AMY;
+import static seedu.guest.testutil.TypicalGuests.BOB;
 
 import org.junit.jupiter.api.Test;
 

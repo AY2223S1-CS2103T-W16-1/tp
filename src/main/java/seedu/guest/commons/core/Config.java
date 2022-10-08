@@ -24,12 +24,12 @@ public class Config {
         this.logLevel = logLevel;
     }
 
-    public Path getUserPrefsFilePath() {
+    public Path getGuestPrefsFilePath() {
         return userPrefsFilePath;
     }
 
-    public void setUserPrefsFilePath(Path userPrefsFilePath) {
-        this.userPrefsFilePath = userPrefsFilePath;
+    public void setGuestPrefsFilePath(Path guestPrefsFilePath) {
+        this.userPrefsFilePath = guestPrefsFilePath;
     }
 
     @Override

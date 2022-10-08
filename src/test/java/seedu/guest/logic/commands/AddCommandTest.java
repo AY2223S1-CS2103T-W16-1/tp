@@ -19,7 +19,7 @@ import seedu.guest.logic.commands.exceptions.CommandException;
 import seedu.guest.model.GuestBook;
 import seedu.guest.model.Model;
 import seedu.guest.model.ReadOnlyGuestBook;
-import seedu.guest.model.ReadOnlyUserPrefs;
+import seedu.guest.model.ReadOnlyGuestPrefs;
 import seedu.guest.model.guest.Guest;
 import seedu.guest.testutil.GuestBuilder;
 
@@ -80,12 +80,12 @@ public class AddCommandTest {
      */
     private class ModelStub implements Model {
         @Override
-        public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+        public void setUserPrefs(ReadOnlyGuestPrefs userPrefs) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyUserPrefs getUserPrefs() {
+        public ReadOnlyGuestPrefs getUserPrefs() {
             throw new AssertionError("This method should not be called.");
         }
 

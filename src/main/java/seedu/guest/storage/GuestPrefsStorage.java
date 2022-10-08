@@ -5,18 +5,18 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.guest.commons.exceptions.DataConversionException;
-import seedu.guest.model.ReadOnlyUserPrefs;
-import seedu.guest.model.UserPrefs;
+import seedu.guest.model.ReadOnlyGuestPrefs;
+import seedu.guest.model.GuestPrefs;
 
 /**
- * Represents a storage for {@link seedu.guest.model.UserPrefs}.
+ * Represents a storage for {@link GuestPrefs}.
  */
-public interface UserPrefsStorage {
+public interface GuestPrefsStorage {
 
     /**
      * Returns the file path of the UserPrefs data file.
      */
-    Path getUserPrefsFilePath();
+    Path getGuestPrefsFilePath();
 
     /**
      * Returns UserPrefs data from storage.
@@ -24,13 +24,13 @@ public interface UserPrefsStorage {
      * @throws DataConversionException if the data in storage is not in the expected format.
      * @throws IOException if there was any problem when reading from the storage.
      */
-    Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException;
+    Optional<GuestPrefs> readGuestPrefs() throws DataConversionException, IOException;
 
     /**
-     * Saves the given {@link seedu.guest.model.ReadOnlyUserPrefs} to the storage.
+     * Saves the given {@link ReadOnlyGuestPrefs} to the storage.
      * @param userPrefs cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException;
+    void saveGuestPrefs(ReadOnlyGuestPrefs userPrefs) throws IOException;
 
 }

@@ -17,7 +17,7 @@ import seedu.guest.model.tag.Tag;
 /**
  * A utility class for Person.
  */
-public class PersonUtil {
+public class GuestUtil {
 
     /**
      * Returns an add command string for adding the {@code person}.

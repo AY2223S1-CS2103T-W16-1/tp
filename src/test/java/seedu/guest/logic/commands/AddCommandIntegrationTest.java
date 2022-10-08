@@ -2,14 +2,14 @@ package seedu.guest.logic.commands;
 
 import static seedu.guest.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.guest.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.guest.testutil.TypicalPersons.getTypicalGuestBook;
+import static seedu.guest.testutil.TypicalGuests.getTypicalGuestBook;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
-import seedu.guest.model.UserPrefs;
+import seedu.guest.model.GuestPrefs;
 import seedu.guest.model.guest.Guest;
 import seedu.guest.testutil.GuestBuilder;
 
@@ -22,14 +22,14 @@ public class AddCommandIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(getTypicalGuestBook(), new UserPrefs());
+        model = new ModelManager(getTypicalGuestBook(), new GuestPrefs());
     }
 
     @Test
     public void execute_newPerson_success() {
         Guest validGuest = new GuestBuilder().build();
 
-        Model expectedModel = new ModelManager(model.getGuestBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getGuestBook(), new GuestPrefs());
         expectedModel.addGuest(validGuest);
 
         assertCommandSuccess(new AddCommand(validGuest), model,

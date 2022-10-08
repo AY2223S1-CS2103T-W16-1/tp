@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.guest.model.Model.PREDICATE_SHOW_ALL_GUESTS;
 import static seedu.guest.testutil.Assert.assertThrows;
-import static seedu.guest.testutil.TypicalPersons.ALICE;
-import static seedu.guest.testutil.TypicalPersons.BENSON;
+import static seedu.guest.testutil.TypicalGuests.ALICE;
+import static seedu.guest.testutil.TypicalGuests.BENSON;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.guest.commons.core.GuiSettings;
 import seedu.guest.model.guest.NameContainsKeywordsPredicate;
-import seedu.guest.testutil.AddressBookBuilder;
+import seedu.guest.testutil.GuestBookBuilder;
 
 public class ModelManagerTest {
 
@@ -24,7 +24,7 @@ public class ModelManagerTest {
 
     @Test
     public void constructor() {
-        assertEquals(new UserPrefs(), modelManager.getUserPrefs());
+        assertEquals(new GuestPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
         assertEquals(new GuestBook(), new GuestBook(modelManager.getGuestBook()));
     }
@@ -36,15 +36,15 @@ public class ModelManagerTest {
 
     @Test
     public void setUserPrefs_validUserPrefs_copiesUserPrefs() {
-        UserPrefs userPrefs = new UserPrefs();
-        userPrefs.setGuestBookFilePath(Paths.get("address/book/file/path"));
-        userPrefs.setGuiSettings(new GuiSettings(1, 2, 3, 4));
-        modelManager.setUserPrefs(userPrefs);
-        assertEquals(userPrefs, modelManager.getUserPrefs());
+        GuestPrefs guestPrefs = new GuestPrefs();
+        guestPrefs.setGuestBookFilePath(Paths.get("address/book/file/path"));
+        guestPrefs.setGuiSettings(new GuiSettings(1, 2, 3, 4));
+        modelManager.setUserPrefs(guestPrefs);
+        assertEquals(guestPrefs, modelManager.getUserPrefs());
 
         // Modifying userPrefs should not modify modelManager's userPrefs
-        UserPrefs oldUserPrefs = new UserPrefs(userPrefs);
-        userPrefs.setGuestBookFilePath(Paths.get("new/address/book/file/path"));
+        GuestPrefs oldUserPrefs = new GuestPrefs(guestPrefs);
+        guestPrefs.setGuestBookFilePath(Paths.get("new/address/book/file/path"));
         assertEquals(oldUserPrefs, modelManager.getUserPrefs());
     }
 
@@ -95,9 +95,9 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        GuestBook guestBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
+        GuestBook guestBook = new GuestBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
         GuestBook differentGuestBook = new GuestBook();
-        UserPrefs userPrefs = new UserPrefs();
+        GuestPrefs userPrefs = new GuestPrefs();
 
         // same values -> returns true
         modelManager = new ModelManager(guestBook, userPrefs);
@@ -125,7 +125,7 @@ public class ModelManagerTest {
         modelManager.updateFilteredGuestList(PREDICATE_SHOW_ALL_GUESTS);
 
         // different userPrefs -> returns false
-        UserPrefs differentUserPrefs = new UserPrefs();
+        GuestPrefs differentUserPrefs = new GuestPrefs();
         differentUserPrefs.setGuestBookFilePath(Paths.get("differentFilePath"));
         assertFalse(modelManager.equals(new ModelManager(guestBook, differentUserPrefs)));
     }

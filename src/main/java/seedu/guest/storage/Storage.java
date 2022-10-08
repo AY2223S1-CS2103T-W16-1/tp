@@ -6,19 +6,19 @@ import java.util.Optional;
 
 import seedu.guest.commons.exceptions.DataConversionException;
 import seedu.guest.model.ReadOnlyGuestBook;
-import seedu.guest.model.ReadOnlyUserPrefs;
-import seedu.guest.model.UserPrefs;
+import seedu.guest.model.ReadOnlyGuestPrefs;
+import seedu.guest.model.GuestPrefs;
 
 /**
  * API of the Storage component
  */
-public interface Storage extends GuestBookStorage, UserPrefsStorage {
+public interface Storage extends GuestBookStorage, GuestPrefsStorage {
 
     @Override
-    Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException;
+    Optional<GuestPrefs> readGuestPrefs() throws DataConversionException, IOException;
 
     @Override
-    void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException;
+    void saveGuestPrefs(ReadOnlyGuestPrefs userPrefs) throws IOException;
 
     @Override
     Path getGuestBookFilePath();

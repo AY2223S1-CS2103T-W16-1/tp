@@ -7,9 +7,9 @@ import java.util.logging.Logger;
 
 import seedu.guest.commons.core.LogsCenter;
 import seedu.guest.commons.exceptions.DataConversionException;
+import seedu.guest.model.GuestPrefs;
 import seedu.guest.model.ReadOnlyGuestBook;
-import seedu.guest.model.ReadOnlyUserPrefs;
-import seedu.guest.model.UserPrefs;
+import seedu.guest.model.ReadOnlyGuestPrefs;
 
 /**
  * Manages storage of GuestBook data in local storage.
@@ -18,31 +18,31 @@ public class StorageManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private GuestBookStorage guestBookStorage;
-    private UserPrefsStorage userPrefsStorage;
+    private GuestPrefsStorage guestPrefsStorage;
 
     /**
      * Creates a {@code StorageManager} with the given {@code GuestBookStorage} and {@code UserPrefStorage}.
      */
-    public StorageManager(GuestBookStorage guestBookStorage, UserPrefsStorage userPrefsStorage) {
+    public StorageManager(GuestBookStorage guestBookStorage, GuestPrefsStorage guestPrefsStorage) {
         this.guestBookStorage = guestBookStorage;
-        this.userPrefsStorage = userPrefsStorage;
+        this.guestPrefsStorage = guestPrefsStorage;
     }
 
     // ================ UserPrefs methods ==============================
 
     @Override
-    public Path getUserPrefsFilePath() {
-        return userPrefsStorage.getUserPrefsFilePath();
+    public Path getGuestPrefsFilePath() {
+        return guestPrefsStorage.getGuestPrefsFilePath();
     }
 
     @Override
-    public Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException {
-        return userPrefsStorage.readUserPrefs();
+    public Optional<GuestPrefs> readGuestPrefs() throws DataConversionException, IOException {
+        return guestPrefsStorage.readGuestPrefs();
     }
 
     @Override
-    public void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException {
-        userPrefsStorage.saveUserPrefs(userPrefs);
+    public void saveGuestPrefs(ReadOnlyGuestPrefs userPrefs) throws IOException {
+        guestPrefsStorage.saveGuestPrefs(userPrefs);
     }
 
 

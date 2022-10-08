@@ -19,15 +19,15 @@ import seedu.guest.model.GuestBook;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
 import seedu.guest.model.ReadOnlyGuestBook;
-import seedu.guest.model.ReadOnlyUserPrefs;
-import seedu.guest.model.UserPrefs;
+import seedu.guest.model.ReadOnlyGuestPrefs;
+import seedu.guest.model.GuestPrefs;
 import seedu.guest.model.util.SampleDataUtil;
 import seedu.guest.storage.GuestBookStorage;
 import seedu.guest.storage.JsonGuestBookStorage;
-import seedu.guest.storage.JsonUserPrefsStorage;
+import seedu.guest.storage.JsonGuestPrefsStorage;
 import seedu.guest.storage.Storage;
 import seedu.guest.storage.StorageManager;
-import seedu.guest.storage.UserPrefsStorage;
+import seedu.guest.storage.GuestPrefsStorage;
 import seedu.guest.ui.Ui;
 import seedu.guest.ui.UiManager;
 
@@ -54,14 +54,14 @@ public class MainApp extends Application {
         AppParameters appParameters = AppParameters.parse(getParameters());
         config = initConfig(appParameters.getConfigPath());
 
-        UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
-        UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        GuestBookStorage guestBookStorage = new JsonGuestBookStorage(userPrefs.getGuestBookFilePath());
-        storage = new StorageManager(guestBookStorage, userPrefsStorage);
+        GuestPrefsStorage guestPrefsStorage = new JsonGuestPrefsStorage(config.getGuestPrefsFilePath());
+        GuestPrefs guestPrefs = initPrefs(guestPrefsStorage);
+        GuestBookStorage guestBookStorage = new JsonGuestBookStorage(guestPrefs.getGuestBookFilePath());
+        storage = new StorageManager(guestBookStorage, guestPrefsStorage);
 
         initLogging(config);
 
-        model = initModelManager(storage, userPrefs);
+        model = initModelManager(storage, guestPrefs);
 
         logic = new LogicManager(model, storage);
 
@@ -73,7 +73,7 @@ public class MainApp extends Application {
      * The data from the sample guest book will be used instead if {@code storage}'s guest book is not found,
      * or an empty guest book will be used instead if errors occur when reading {@code storage}'s guest book.
      */
-    private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
+    private Model initModelManager(Storage storage, ReadOnlyGuestPrefs userPrefs) {
         Optional<ReadOnlyGuestBook> guestBookOptional;
         ReadOnlyGuestBook initialData;
         try {
@@ -138,26 +138,26 @@ public class MainApp extends Application {
      * or a new {@code UserPrefs} with default configuration if errors occur when
      * reading from the file.
      */
-    protected UserPrefs initPrefs(UserPrefsStorage storage) {
-        Path prefsFilePath = storage.getUserPrefsFilePath();
+    protected GuestPrefs initPrefs(GuestPrefsStorage storage) {
+        Path prefsFilePath = storage.getGuestPrefsFilePath();
         logger.info("Using prefs file : " + prefsFilePath);
 
-        UserPrefs initializedPrefs;
+        GuestPrefs initializedPrefs;
         try {
-            Optional<UserPrefs> prefsOptional = storage.readUserPrefs();
-            initializedPrefs = prefsOptional.orElse(new UserPrefs());
+            Optional<GuestPrefs> prefsOptional = storage.readGuestPrefs();
+            initializedPrefs = prefsOptional.orElse(new GuestPrefs());
         } catch (DataConversionException e) {
             logger.warning("UserPrefs file at " + prefsFilePath + " is not in the correct format. "
                     + "Using default user prefs");
-            initializedPrefs = new UserPrefs();
+            initializedPrefs = new GuestPrefs();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty GuestBook");
-            initializedPrefs = new UserPrefs();
+            initializedPrefs = new GuestPrefs();
         }
 
         //Update prefs file in case it was missing to begin with or there are new/unused fields
         try {
-            storage.saveUserPrefs(initializedPrefs);
+            storage.saveGuestPrefs(initializedPrefs);
         } catch (IOException e) {
             logger.warning("Failed to save config file : " + StringUtil.getDetails(e));
         }
@@ -175,7 +175,7 @@ public class MainApp extends Application {
     public void stop() {
         logger.info("============================ [ Stopping Guest Book ] =============================");
         try {
-            storage.saveUserPrefs(model.getUserPrefs());
+            storage.saveGuestPrefs(model.getUserPrefs());
         } catch (IOException e) {
             logger.severe("Failed to save preferences " + StringUtil.getDetails(e));
         }
