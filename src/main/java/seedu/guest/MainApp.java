@@ -19,15 +19,15 @@ import seedu.guest.model.GuestBook;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
 import seedu.guest.model.ReadOnlyGuestBook;
-import seedu.guest.model.ReadOnlyGuestPrefs;
 import seedu.guest.model.GuestPrefs;
+import seedu.guest.model.ReadOnlyGuestPrefs;
 import seedu.guest.model.util.SampleDataUtil;
 import seedu.guest.storage.GuestBookStorage;
 import seedu.guest.storage.JsonGuestBookStorage;
 import seedu.guest.storage.JsonGuestPrefsStorage;
 import seedu.guest.storage.Storage;
-import seedu.guest.storage.StorageManager;
 import seedu.guest.storage.GuestPrefsStorage;
+import seedu.guest.storage.StorageManager;
 import seedu.guest.ui.Ui;
 import seedu.guest.ui.UiManager;
 
