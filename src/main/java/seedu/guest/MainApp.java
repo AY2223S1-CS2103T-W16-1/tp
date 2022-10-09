@@ -23,11 +23,11 @@ import seedu.guest.model.ReadOnlyGuestPrefs;
 import seedu.guest.model.UserPrefs;
 import seedu.guest.model.util.SampleDataUtil;
 import seedu.guest.storage.GuestBookStorage;
-import seedu.guest.storage.UserPrefsStorage;
 import seedu.guest.storage.JsonGuestBookStorage;
 import seedu.guest.storage.JsonUserPrefsStorage;
 import seedu.guest.storage.Storage;
 import seedu.guest.storage.StorageManager;
+import seedu.guest.storage.UserPrefsStorage;
 import seedu.guest.ui.Ui;
 import seedu.guest.ui.UiManager;
 
