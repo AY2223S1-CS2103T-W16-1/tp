@@ -8,7 +8,7 @@ import static seedu.guest.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.guest.model.GuestPrefs;
+import seedu.guest.model.UserPrefs;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
 
@@ -22,8 +22,8 @@ public class ListCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(getTypicalGuestBook(), new GuestPrefs());
-        expectedModel = new ModelManager(model.getGuestBook(), new GuestPrefs());
+        model = new ModelManager(getTypicalGuestBook(), new UserPrefs());
+        expectedModel = new ModelManager(model.getGuestBook(), new UserPrefs());
     }
 
     @Test

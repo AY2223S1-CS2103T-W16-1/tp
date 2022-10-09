@@ -7,7 +7,7 @@ import static seedu.guest.testutil.TypicalGuests.getTypicalGuestBook;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.guest.model.GuestPrefs;
+import seedu.guest.model.UserPrefs;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
 import seedu.guest.model.guest.Guest;
@@ -22,14 +22,14 @@ public class AddCommandIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(getTypicalGuestBook(), new GuestPrefs());
+        model = new ModelManager(getTypicalGuestBook(), new UserPrefs());
     }
 
     @Test
     public void execute_newPerson_success() {
         Guest validGuest = new GuestBuilder().build();
 
-        Model expectedModel = new ModelManager(model.getGuestBook(), new GuestPrefs());
+        Model expectedModel = new ModelManager(model.getGuestBook(), new UserPrefs());
         expectedModel.addGuest(validGuest);
 
         assertCommandSuccess(new AddCommand(validGuest), model,

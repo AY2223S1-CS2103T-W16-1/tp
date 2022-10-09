@@ -11,7 +11,7 @@ import seedu.guest.commons.core.GuiSettings;
 /**
  * Represents User's preferences.
  */
-public class GuestPrefs implements ReadOnlyGuestPrefs {
+public class UserPrefs implements ReadOnlyGuestPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
     private Path guestBookFilePath = Paths.get("data" , "guestbook.json");
@@ -19,12 +19,12 @@ public class GuestPrefs implements ReadOnlyGuestPrefs {
     /**
      * Creates a {@code UserPrefs} with default values.
      */
-    public GuestPrefs() {}
+    public UserPrefs() {}
 
     /**
      * Creates a {@code UserPrefs} with the prefs in {@code userPrefs}.
      */
-    public GuestPrefs(ReadOnlyGuestPrefs userPrefs) {
+    public UserPrefs(ReadOnlyGuestPrefs userPrefs) {
         this();
         resetData(userPrefs);
     }
@@ -61,11 +61,11 @@ public class GuestPrefs implements ReadOnlyGuestPrefs {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof GuestPrefs)) { //this handles null as well.
+        if (!(other instanceof UserPrefs)) { //this handles null as well.
             return false;
         }
 
-        GuestPrefs o = (GuestPrefs) other;
+        UserPrefs o = (UserPrefs) other;
 
         return guiSettings.equals(o.guiSettings)
                 && guestBookFilePath.equals(o.guestBookFilePath);

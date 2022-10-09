@@ -15,7 +15,7 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.guest.model.GuestPrefs;
+import seedu.guest.model.UserPrefs;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
 import seedu.guest.model.guest.NameContainsKeywordsPredicate;
@@ -24,8 +24,8 @@ import seedu.guest.model.guest.NameContainsKeywordsPredicate;
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
  */
 public class FindCommandTest {
-    private Model model = new ModelManager(getTypicalGuestBook(), new GuestPrefs());
-    private Model expectedModel = new ModelManager(getTypicalGuestBook(), new GuestPrefs());
+    private Model model = new ModelManager(getTypicalGuestBook(), new UserPrefs());
+    private Model expectedModel = new ModelManager(getTypicalGuestBook(), new UserPrefs());
 
     @Test
     public void equals() {

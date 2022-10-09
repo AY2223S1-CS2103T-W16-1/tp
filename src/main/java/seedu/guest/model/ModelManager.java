@@ -20,7 +20,7 @@ public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final GuestBook guestBook;
-    private final GuestPrefs userPrefs;
+    private final UserPrefs userPrefs;
     private final FilteredList<Guest> filteredGuests;
 
     /**
@@ -32,12 +32,12 @@ public class ModelManager implements Model {
         logger.fine("Initializing with guest book: " + guestList + " and user prefs " + userPrefs);
 
         this.guestBook = new GuestBook(guestList);
-        this.userPrefs = new GuestPrefs(userPrefs);
+        this.userPrefs = new UserPrefs(userPrefs);
         filteredGuests = new FilteredList<>(this.guestBook.getGuestList());
     }
 
     public ModelManager() {
-        this(new GuestBook(), new GuestPrefs());
+        this(new GuestBook(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================

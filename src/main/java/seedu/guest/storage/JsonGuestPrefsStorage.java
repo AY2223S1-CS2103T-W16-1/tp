@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import seedu.guest.commons.exceptions.DataConversionException;
 import seedu.guest.commons.util.JsonUtil;
-import seedu.guest.model.GuestPrefs;
+import seedu.guest.model.UserPrefs;
 import seedu.guest.model.ReadOnlyGuestPrefs;
 
 /**
@@ -26,7 +26,7 @@ public class JsonGuestPrefsStorage implements GuestPrefsStorage {
     }
 
     @Override
-    public Optional<GuestPrefs> readGuestPrefs() throws DataConversionException {
+    public Optional<UserPrefs> readGuestPrefs() throws DataConversionException {
         return readGuestPrefs(filePath);
     }
 
@@ -35,8 +35,8 @@ public class JsonGuestPrefsStorage implements GuestPrefsStorage {
      * @param prefsFilePath location of the data. Cannot be null.
      * @throws DataConversionException if the file format is not as expected.
      */
-    public Optional<GuestPrefs> readGuestPrefs(Path prefsFilePath) throws DataConversionException {
-        return JsonUtil.readJsonFile(prefsFilePath, GuestPrefs.class);
+    public Optional<UserPrefs> readGuestPrefs(Path prefsFilePath) throws DataConversionException {
+        return JsonUtil.readJsonFile(prefsFilePath, UserPrefs.class);
     }
 
     @Override

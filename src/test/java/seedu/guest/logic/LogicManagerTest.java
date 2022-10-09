@@ -23,7 +23,7 @@ import seedu.guest.logic.commands.CommandResult;
 import seedu.guest.logic.commands.ListCommand;
 import seedu.guest.logic.commands.exceptions.CommandException;
 import seedu.guest.logic.parser.exceptions.ParseException;
-import seedu.guest.model.GuestPrefs;
+import seedu.guest.model.UserPrefs;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
 import seedu.guest.model.ReadOnlyGuestBook;
@@ -131,7 +131,7 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getGuestBook(), new GuestPrefs());
+        Model expectedModel = new ModelManager(model.getGuestBook(), new UserPrefs());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 

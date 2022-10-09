@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.guest.commons.core.Messages;
 import seedu.guest.commons.core.index.Index;
-import seedu.guest.model.GuestPrefs;
+import seedu.guest.model.UserPrefs;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
 import seedu.guest.model.guest.Guest;
@@ -24,7 +24,7 @@ import seedu.guest.model.guest.Guest;
  */
 public class DeleteCommandTest {
 
-    private Model model = new ModelManager(getTypicalGuestBook(), new GuestPrefs());
+    private Model model = new ModelManager(getTypicalGuestBook(), new UserPrefs());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -33,7 +33,7 @@ public class DeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_GUEST_SUCCESS, guestToDelete);
 
-        ModelManager expectedModel = new ModelManager(model.getGuestBook(), new GuestPrefs());
+        ModelManager expectedModel = new ModelManager(model.getGuestBook(), new UserPrefs());
         expectedModel.deleteGuest(guestToDelete);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
@@ -56,7 +56,7 @@ public class DeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_GUEST_SUCCESS, guestToDelete);
 
-        Model expectedModel = new ModelManager(model.getGuestBook(), new GuestPrefs());
+        Model expectedModel = new ModelManager(model.getGuestBook(), new UserPrefs());
         expectedModel.deleteGuest(guestToDelete);
         showNoGuest(expectedModel);
 

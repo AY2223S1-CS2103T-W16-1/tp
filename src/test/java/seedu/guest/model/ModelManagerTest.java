@@ -24,7 +24,7 @@ public class ModelManagerTest {
 
     @Test
     public void constructor() {
-        assertEquals(new GuestPrefs(), modelManager.getUserPrefs());
+        assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
         assertEquals(new GuestBook(), new GuestBook(modelManager.getGuestBook()));
     }
@@ -36,15 +36,15 @@ public class ModelManagerTest {
 
     @Test
     public void setUserPrefs_validUserPrefs_copiesUserPrefs() {
-        GuestPrefs guestPrefs = new GuestPrefs();
-        guestPrefs.setGuestBookFilePath(Paths.get("address/book/file/path"));
-        guestPrefs.setGuiSettings(new GuiSettings(1, 2, 3, 4));
-        modelManager.setUserPrefs(guestPrefs);
-        assertEquals(guestPrefs, modelManager.getUserPrefs());
+        UserPrefs userPrefs = new UserPrefs();
+        userPrefs.setGuestBookFilePath(Paths.get("address/book/file/path"));
+        userPrefs.setGuiSettings(new GuiSettings(1, 2, 3, 4));
+        modelManager.setUserPrefs(userPrefs);
+        assertEquals(userPrefs, modelManager.getUserPrefs());
 
         // Modifying userPrefs should not modify modelManager's userPrefs
-        GuestPrefs oldUserPrefs = new GuestPrefs(guestPrefs);
-        guestPrefs.setGuestBookFilePath(Paths.get("new/address/book/file/path"));
+        UserPrefs oldUserPrefs = new UserPrefs(userPrefs);
+        userPrefs.setGuestBookFilePath(Paths.get("new/address/book/file/path"));
         assertEquals(oldUserPrefs, modelManager.getUserPrefs());
     }
 
@@ -97,7 +97,7 @@ public class ModelManagerTest {
     public void equals() {
         GuestBook guestBook = new GuestBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
         GuestBook differentGuestBook = new GuestBook();
-        GuestPrefs userPrefs = new GuestPrefs();
+        UserPrefs userPrefs = new UserPrefs();
 
         // same values -> returns true
         modelManager = new ModelManager(guestBook, userPrefs);
@@ -125,7 +125,7 @@ public class ModelManagerTest {
         modelManager.updateFilteredGuestList(PREDICATE_SHOW_ALL_GUESTS);
 
         // different userPrefs -> returns false
-        GuestPrefs differentUserPrefs = new GuestPrefs();
+        UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setGuestBookFilePath(Paths.get("differentFilePath"));
         assertFalse(modelManager.equals(new ModelManager(guestBook, differentUserPrefs)));
     }

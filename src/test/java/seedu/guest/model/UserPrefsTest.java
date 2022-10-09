@@ -4,17 +4,17 @@ import static seedu.guest.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-public class GuestPrefsTest {
+public class UserPrefsTest {
 
     @Test
     public void setGuiSettings_nullGuiSettings_throwsNullPointerException() {
-        GuestPrefs userPref = new GuestPrefs();
+        UserPrefs userPref = new UserPrefs();
         assertThrows(NullPointerException.class, () -> userPref.setGuiSettings(null));
     }
 
     @Test
     public void setAddressBookFilePath_nullPath_throwsNullPointerException() {
-        GuestPrefs userPrefs = new GuestPrefs();
+        UserPrefs userPrefs = new UserPrefs();
         assertThrows(NullPointerException.class, () -> userPrefs.setGuestBookFilePath(null));
     }
 }

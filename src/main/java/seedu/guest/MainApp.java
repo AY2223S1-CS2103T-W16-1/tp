@@ -16,7 +16,7 @@ import seedu.guest.commons.util.StringUtil;
 import seedu.guest.logic.Logic;
 import seedu.guest.logic.LogicManager;
 import seedu.guest.model.GuestBook;
-import seedu.guest.model.GuestPrefs;
+import seedu.guest.model.UserPrefs;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
 import seedu.guest.model.ReadOnlyGuestBook;
@@ -55,13 +55,13 @@ public class MainApp extends Application {
         config = initConfig(appParameters.getConfigPath());
 
         GuestPrefsStorage guestPrefsStorage = new JsonGuestPrefsStorage(config.getGuestPrefsFilePath());
-        GuestPrefs guestPrefs = initPrefs(guestPrefsStorage);
-        GuestBookStorage guestBookStorage = new JsonGuestBookStorage(guestPrefs.getGuestBookFilePath());
+        UserPrefs userPrefs = initPrefs(guestPrefsStorage);
+        GuestBookStorage guestBookStorage = new JsonGuestBookStorage(userPrefs.getGuestBookFilePath());
         storage = new StorageManager(guestBookStorage, guestPrefsStorage);
 
         initLogging(config);
 
-        model = initModelManager(storage, guestPrefs);
+        model = initModelManager(storage, userPrefs);
 
         logic = new LogicManager(model, storage);
 
@@ -138,21 +138,21 @@ public class MainApp extends Application {
      * or a new {@code UserPrefs} with default configuration if errors occur when
      * reading from the file.
      */
-    protected GuestPrefs initPrefs(GuestPrefsStorage storage) {
+    protected UserPrefs initPrefs(GuestPrefsStorage storage) {
         Path prefsFilePath = storage.getGuestPrefsFilePath();
         logger.info("Using prefs file : " + prefsFilePath);
 
-        GuestPrefs initializedPrefs;
+        UserPrefs initializedPrefs;
         try {
-            Optional<GuestPrefs> prefsOptional = storage.readGuestPrefs();
-            initializedPrefs = prefsOptional.orElse(new GuestPrefs());
+            Optional<UserPrefs> prefsOptional = storage.readGuestPrefs();
+            initializedPrefs = prefsOptional.orElse(new UserPrefs());
         } catch (DataConversionException e) {
             logger.warning("UserPrefs file at " + prefsFilePath + " is not in the correct format. "
                     + "Using default user prefs");
-            initializedPrefs = new GuestPrefs();
+            initializedPrefs = new UserPrefs();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty GuestBook");
-            initializedPrefs = new GuestPrefs();
+            initializedPrefs = new UserPrefs();
         }
 
         //Update prefs file in case it was missing to begin with or there are new/unused fields

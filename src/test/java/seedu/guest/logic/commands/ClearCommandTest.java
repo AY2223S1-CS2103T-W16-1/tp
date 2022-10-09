@@ -6,7 +6,7 @@ import static seedu.guest.testutil.TypicalGuests.getTypicalGuestBook;
 import org.junit.jupiter.api.Test;
 
 import seedu.guest.model.GuestBook;
-import seedu.guest.model.GuestPrefs;
+import seedu.guest.model.UserPrefs;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
 
@@ -22,8 +22,8 @@ public class ClearCommandTest {
 
     @Test
     public void execute_nonEmptyGuestBook_success() {
-        Model model = new ModelManager(getTypicalGuestBook(), new GuestPrefs());
-        Model expectedModel = new ModelManager(getTypicalGuestBook(), new GuestPrefs());
+        Model model = new ModelManager(getTypicalGuestBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(getTypicalGuestBook(), new UserPrefs());
         expectedModel.setGuestBook(new GuestBook());
 
         assertCommandSuccess(new ClearCommand(), model, ClearCommand.MESSAGE_SUCCESS, expectedModel);

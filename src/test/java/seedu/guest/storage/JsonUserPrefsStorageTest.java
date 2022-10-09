@@ -14,9 +14,9 @@ import org.junit.jupiter.api.io.TempDir;
 
 import seedu.guest.commons.core.GuiSettings;
 import seedu.guest.commons.exceptions.DataConversionException;
-import seedu.guest.model.GuestPrefs;
+import seedu.guest.model.UserPrefs;
 
-public class JsonGuestPrefsStorageTest {
+public class JsonUserPrefsStorageTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonUserPrefsStorageTest");
 
@@ -28,7 +28,7 @@ public class JsonGuestPrefsStorageTest {
         assertThrows(NullPointerException.class, () -> readGuestPrefs(null));
     }
 
-    private Optional<GuestPrefs> readGuestPrefs(String userPrefsFileInTestDataFolder) throws DataConversionException {
+    private Optional<UserPrefs> readGuestPrefs(String userPrefsFileInTestDataFolder) throws DataConversionException {
         Path prefsFilePath = addToTestDataPathIfNotNull(userPrefsFileInTestDataFolder);
         return new JsonGuestPrefsStorage(prefsFilePath).readGuestPrefs(prefsFilePath);
     }
@@ -51,30 +51,30 @@ public class JsonGuestPrefsStorageTest {
 
     @Test
     public void readUserPrefs_fileInOrder_successfullyRead() throws DataConversionException {
-        GuestPrefs expected = getTypicalGuestPrefs();
-        GuestPrefs actual = readGuestPrefs("TypicalUserPref.json").get();
+        UserPrefs expected = getTypicalGuestPrefs();
+        UserPrefs actual = readGuestPrefs("TypicalUserPref.json").get();
         assertEquals(expected, actual);
     }
 
     @Test
     public void readUserPrefs_valuesMissingFromFile_defaultValuesUsed() throws DataConversionException {
-        GuestPrefs actual = readGuestPrefs("EmptyUserPrefs.json").get();
-        assertEquals(new GuestPrefs(), actual);
+        UserPrefs actual = readGuestPrefs("EmptyUserPrefs.json").get();
+        assertEquals(new UserPrefs(), actual);
     }
 
     @Test
     public void readUserPrefs_extraValuesInFile_extraValuesIgnored() throws DataConversionException {
-        GuestPrefs expected = getTypicalGuestPrefs();
-        GuestPrefs actual = readGuestPrefs("ExtraValuesUserPref.json").get();
+        UserPrefs expected = getTypicalGuestPrefs();
+        UserPrefs actual = readGuestPrefs("ExtraValuesUserPref.json").get();
 
         assertEquals(expected, actual);
     }
 
-    private GuestPrefs getTypicalGuestPrefs() {
-        GuestPrefs guestPrefs = new GuestPrefs();
-        guestPrefs.setGuiSettings(new GuiSettings(1000, 500, 300, 100));
-        guestPrefs.setGuestBookFilePath(Paths.get("data/guestbook.json"));
-        return guestPrefs;
+    private UserPrefs getTypicalGuestPrefs() {
+        UserPrefs userPrefs = new UserPrefs();
+        userPrefs.setGuiSettings(new GuiSettings(1000, 500, 300, 100));
+        userPrefs.setGuestBookFilePath(Paths.get("data/guestbook.json"));
+        return userPrefs;
     }
 
     @Test
@@ -84,16 +84,16 @@ public class JsonGuestPrefsStorageTest {
 
     @Test
     public void saveUserPrefs_nullFilePath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> saveGuestPrefs(new GuestPrefs(), null));
+        assertThrows(NullPointerException.class, () -> saveGuestPrefs(new UserPrefs(), null));
     }
 
     /**
      * Saves {@code userPrefs} at the specified {@code prefsFileInTestDataFolder} filepath.
      */
-    private void saveGuestPrefs(GuestPrefs guestPrefs, String prefsFileInTestDataFolder) {
+    private void saveGuestPrefs(UserPrefs userPrefs, String prefsFileInTestDataFolder) {
         try {
             new JsonGuestPrefsStorage(addToTestDataPathIfNotNull(prefsFileInTestDataFolder))
-                    .saveGuestPrefs(guestPrefs);
+                    .saveGuestPrefs(userPrefs);
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file", ioe);
         }
@@ -102,7 +102,7 @@ public class JsonGuestPrefsStorageTest {
     @Test
     public void saveUserPrefs_allInOrder_success() throws DataConversionException, IOException {
 
-        GuestPrefs original = new GuestPrefs();
+        UserPrefs original = new UserPrefs();
         original.setGuiSettings(new GuiSettings(1200, 200, 0, 2));
 
         Path pefsFilePath = testFolder.resolve("TempPrefs.json");
@@ -110,7 +110,7 @@ public class JsonGuestPrefsStorageTest {
 
         //Try writing when the file doesn't exist
         jsonGuestPrefsStorage.saveGuestPrefs(original);
-        GuestPrefs readBack = jsonGuestPrefsStorage.readGuestPrefs().get();
+        UserPrefs readBack = jsonGuestPrefsStorage.readGuestPrefs().get();
         assertEquals(original, readBack);
 
         //Try saving when the file exists

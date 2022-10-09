@@ -20,7 +20,7 @@ import seedu.guest.commons.core.Messages;
 import seedu.guest.commons.core.index.Index;
 import seedu.guest.logic.commands.EditCommand.EditGuestDescriptor;
 import seedu.guest.model.GuestBook;
-import seedu.guest.model.GuestPrefs;
+import seedu.guest.model.UserPrefs;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
 import seedu.guest.model.guest.Guest;
@@ -32,7 +32,7 @@ import seedu.guest.testutil.GuestBuilder;
  */
 public class EditCommandTest {
 
-    private Model model = new ModelManager(getTypicalGuestBook(), new GuestPrefs());
+    private Model model = new ModelManager(getTypicalGuestBook(), new UserPrefs());
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
@@ -42,7 +42,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_GUEST_SUCCESS, editedGuest);
 
-        Model expectedModel = new ModelManager(new GuestBook(model.getGuestBook()), new GuestPrefs());
+        Model expectedModel = new ModelManager(new GuestBook(model.getGuestBook()), new UserPrefs());
         expectedModel.setGuest(model.getFilteredGuestList().get(0), editedGuest);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -62,7 +62,7 @@ public class EditCommandTest {
         EditCommand editCommand = new EditCommand(indexLastGuest, descriptor);
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_GUEST_SUCCESS, editedGuest);
 
-        Model expectedModel = new ModelManager(new GuestBook(model.getGuestBook()), new GuestPrefs());
+        Model expectedModel = new ModelManager(new GuestBook(model.getGuestBook()), new UserPrefs());
         expectedModel.setGuest(lastGuest, editedGuest);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -75,7 +75,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_GUEST_SUCCESS, editedGuest);
 
-        Model expectedModel = new ModelManager(new GuestBook(model.getGuestBook()), new GuestPrefs());
+        Model expectedModel = new ModelManager(new GuestBook(model.getGuestBook()), new UserPrefs());
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -91,7 +91,7 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_GUEST_SUCCESS, editedGuest);
 
-        Model expectedModel = new ModelManager(new GuestBook(model.getGuestBook()), new GuestPrefs());
+        Model expectedModel = new ModelManager(new GuestBook(model.getGuestBook()), new UserPrefs());
         expectedModel.setGuest(model.getFilteredGuestList().get(0), editedGuest);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);

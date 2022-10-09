@@ -92,12 +92,12 @@ public class JsonGuestBookStorageTest {
     }
 
     /**
-     * Saves {@code addressBook} at the specified {@code filePath}.
+     * Saves {@code GuestBook} at the specified {@code filePath}.
      */
-    private void saveGuestBook(ReadOnlyGuestBook addressBook, String filePath) {
+    private void saveGuestBook(ReadOnlyGuestBook guestBook, String filePath) {
         try {
             new JsonGuestBookStorage(Paths.get(filePath))
-                    .saveGuestBook(addressBook, addToTestDataPathIfNotNull(filePath));
+                    .saveGuestBook(guestBook, addToTestDataPathIfNotNull(filePath));
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file.", ioe);
         }

@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 import seedu.guest.commons.core.LogsCenter;
 import seedu.guest.commons.exceptions.DataConversionException;
-import seedu.guest.model.GuestPrefs;
+import seedu.guest.model.UserPrefs;
 import seedu.guest.model.ReadOnlyGuestBook;
 import seedu.guest.model.ReadOnlyGuestPrefs;
 
@@ -36,7 +36,7 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public Optional<GuestPrefs> readGuestPrefs() throws DataConversionException, IOException {
+    public Optional<UserPrefs> readGuestPrefs() throws DataConversionException, IOException {
         return guestPrefsStorage.readGuestPrefs();
     }
 
