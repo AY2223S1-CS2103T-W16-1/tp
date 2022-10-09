@@ -15,9 +15,9 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.guest.model.UserPrefs;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
+import seedu.guest.model.UserPrefs;
 import seedu.guest.model.guest.NameContainsKeywordsPredicate;
 
 /**

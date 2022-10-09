@@ -6,9 +6,9 @@ import static seedu.guest.testutil.TypicalGuests.getTypicalGuestBook;
 import org.junit.jupiter.api.Test;
 
 import seedu.guest.model.GuestBook;
-import seedu.guest.model.UserPrefs;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
+import seedu.guest.model.UserPrefs;
 
 public class ClearCommandTest {
 

@@ -7,9 +7,9 @@ import static seedu.guest.testutil.TypicalGuests.getTypicalGuestBook;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.guest.model.UserPrefs;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
+import seedu.guest.model.UserPrefs;
 import seedu.guest.model.guest.Guest;
 import seedu.guest.testutil.GuestBuilder;
 

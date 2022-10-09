@@ -8,9 +8,9 @@ import static seedu.guest.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.guest.model.UserPrefs;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
+import seedu.guest.model.UserPrefs;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ListCommand.

@@ -13,9 +13,9 @@ import org.junit.jupiter.api.Test;
 
 import seedu.guest.commons.core.Messages;
 import seedu.guest.commons.core.index.Index;
-import seedu.guest.model.UserPrefs;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
+import seedu.guest.model.UserPrefs;
 import seedu.guest.model.guest.Guest;
 
 /**
