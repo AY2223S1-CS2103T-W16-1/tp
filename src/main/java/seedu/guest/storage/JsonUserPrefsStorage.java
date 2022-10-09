@@ -6,17 +6,17 @@ import java.util.Optional;
 
 import seedu.guest.commons.exceptions.DataConversionException;
 import seedu.guest.commons.util.JsonUtil;
-import seedu.guest.model.UserPrefs;
 import seedu.guest.model.ReadOnlyGuestPrefs;
+import seedu.guest.model.UserPrefs;
 
 /**
  * A class to access UserPrefs stored in the hard disk as a json file
  */
-public class JsonGuestPrefsStorage implements GuestPrefsStorage {
+public class JsonUserPrefsStorage implements UserPrefsStorage {
 
     private Path filePath;
 
-    public JsonGuestPrefsStorage(Path filePath) {
+    public JsonUserPrefsStorage(Path filePath) {
         this.filePath = filePath;
     }
 

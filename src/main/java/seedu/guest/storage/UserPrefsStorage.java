@@ -5,13 +5,13 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.guest.commons.exceptions.DataConversionException;
-import seedu.guest.model.UserPrefs;
 import seedu.guest.model.ReadOnlyGuestPrefs;
+import seedu.guest.model.UserPrefs;
 
 /**
  * Represents a storage for {@link UserPrefs}.
  */
-public interface GuestPrefsStorage {
+public interface UserPrefsStorage {
 
     /**
      * Returns the file path of the UserPrefs data file.

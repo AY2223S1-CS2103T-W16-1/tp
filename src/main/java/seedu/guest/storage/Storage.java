@@ -5,14 +5,14 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.guest.commons.exceptions.DataConversionException;
-import seedu.guest.model.UserPrefs;
 import seedu.guest.model.ReadOnlyGuestBook;
 import seedu.guest.model.ReadOnlyGuestPrefs;
+import seedu.guest.model.UserPrefs;
 
 /**
  * API of the Storage component
  */
-public interface Storage extends GuestBookStorage, GuestPrefsStorage {
+public interface Storage extends GuestBookStorage, UserPrefsStorage {
 
     @Override
     Optional<UserPrefs> readGuestPrefs() throws DataConversionException, IOException;

@@ -16,16 +16,16 @@ import seedu.guest.commons.util.StringUtil;
 import seedu.guest.logic.Logic;
 import seedu.guest.logic.LogicManager;
 import seedu.guest.model.GuestBook;
-import seedu.guest.model.UserPrefs;
 import seedu.guest.model.Model;
 import seedu.guest.model.ModelManager;
 import seedu.guest.model.ReadOnlyGuestBook;
 import seedu.guest.model.ReadOnlyGuestPrefs;
+import seedu.guest.model.UserPrefs;
 import seedu.guest.model.util.SampleDataUtil;
 import seedu.guest.storage.GuestBookStorage;
-import seedu.guest.storage.GuestPrefsStorage;
+import seedu.guest.storage.UserPrefsStorage;
 import seedu.guest.storage.JsonGuestBookStorage;
-import seedu.guest.storage.JsonGuestPrefsStorage;
+import seedu.guest.storage.JsonUserPrefsStorage;
 import seedu.guest.storage.Storage;
 import seedu.guest.storage.StorageManager;
 import seedu.guest.ui.Ui;
@@ -54,10 +54,10 @@ public class MainApp extends Application {
         AppParameters appParameters = AppParameters.parse(getParameters());
         config = initConfig(appParameters.getConfigPath());
 
-        GuestPrefsStorage guestPrefsStorage = new JsonGuestPrefsStorage(config.getGuestPrefsFilePath());
-        UserPrefs userPrefs = initPrefs(guestPrefsStorage);
+        UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getGuestPrefsFilePath());
+        UserPrefs userPrefs = initPrefs(userPrefsStorage);
         GuestBookStorage guestBookStorage = new JsonGuestBookStorage(userPrefs.getGuestBookFilePath());
-        storage = new StorageManager(guestBookStorage, guestPrefsStorage);
+        storage = new StorageManager(guestBookStorage, userPrefsStorage);
 
         initLogging(config);
 
@@ -138,7 +138,7 @@ public class MainApp extends Application {
      * or a new {@code UserPrefs} with default configuration if errors occur when
      * reading from the file.
      */
-    protected UserPrefs initPrefs(GuestPrefsStorage storage) {
+    protected UserPrefs initPrefs(UserPrefsStorage storage) {
         Path prefsFilePath = storage.getGuestPrefsFilePath();
         logger.info("Using prefs file : " + prefsFilePath);
 

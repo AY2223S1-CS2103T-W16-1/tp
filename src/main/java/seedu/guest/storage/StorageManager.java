@@ -7,9 +7,9 @@ import java.util.logging.Logger;
 
 import seedu.guest.commons.core.LogsCenter;
 import seedu.guest.commons.exceptions.DataConversionException;
-import seedu.guest.model.UserPrefs;
 import seedu.guest.model.ReadOnlyGuestBook;
 import seedu.guest.model.ReadOnlyGuestPrefs;
+import seedu.guest.model.UserPrefs;
 
 /**
  * Manages storage of GuestBook data in local storage.
@@ -18,31 +18,31 @@ public class StorageManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private GuestBookStorage guestBookStorage;
-    private GuestPrefsStorage guestPrefsStorage;
+    private UserPrefsStorage userPrefsStorage;
 
     /**
      * Creates a {@code StorageManager} with the given {@code GuestBookStorage} and {@code UserPrefStorage}.
      */
-    public StorageManager(GuestBookStorage guestBookStorage, GuestPrefsStorage guestPrefsStorage) {
+    public StorageManager(GuestBookStorage guestBookStorage, UserPrefsStorage userPrefsStorage) {
         this.guestBookStorage = guestBookStorage;
-        this.guestPrefsStorage = guestPrefsStorage;
+        this.userPrefsStorage = userPrefsStorage;
     }
 
     // ================ UserPrefs methods ==============================
 
     @Override
     public Path getGuestPrefsFilePath() {
-        return guestPrefsStorage.getGuestPrefsFilePath();
+        return userPrefsStorage.getGuestPrefsFilePath();
     }
 
     @Override
     public Optional<UserPrefs> readGuestPrefs() throws DataConversionException, IOException {
-        return guestPrefsStorage.readGuestPrefs();
+        return userPrefsStorage.readGuestPrefs();
     }
 
     @Override
     public void saveGuestPrefs(ReadOnlyGuestPrefs userPrefs) throws IOException {
-        guestPrefsStorage.saveGuestPrefs(userPrefs);
+        userPrefsStorage.saveGuestPrefs(userPrefs);
     }
 
 

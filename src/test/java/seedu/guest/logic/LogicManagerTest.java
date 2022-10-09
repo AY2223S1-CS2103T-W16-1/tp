@@ -29,7 +29,7 @@ import seedu.guest.model.ModelManager;
 import seedu.guest.model.ReadOnlyGuestBook;
 import seedu.guest.model.guest.Guest;
 import seedu.guest.storage.JsonGuestBookStorage;
-import seedu.guest.storage.JsonGuestPrefsStorage;
+import seedu.guest.storage.JsonUserPrefsStorage;
 import seedu.guest.storage.StorageManager;
 import seedu.guest.testutil.GuestBuilder;
 
@@ -46,7 +46,7 @@ public class LogicManagerTest {
     public void setUp() {
         JsonGuestBookStorage guestBookStorage =
                 new JsonGuestBookStorage(temporaryFolder.resolve("guestBook.json"));
-        JsonGuestPrefsStorage userPrefsStorage = new JsonGuestPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
+        JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         StorageManager storage = new StorageManager(guestBookStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
     }
@@ -74,8 +74,8 @@ public class LogicManagerTest {
         // Setup LogicManager with JsonGuestBookIoExceptionThrowingStub
         JsonGuestBookStorage guestBookStorage =
                 new JsonGuestBookIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionGuestBook.json"));
-        JsonGuestPrefsStorage userPrefsStorage =
-                new JsonGuestPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
+        JsonUserPrefsStorage userPrefsStorage =
+                new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
         StorageManager storage = new StorageManager(guestBookStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
 
