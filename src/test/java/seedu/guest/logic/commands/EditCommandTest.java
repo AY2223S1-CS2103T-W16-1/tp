@@ -6,7 +6,6 @@ import static seedu.guest.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.guest.logic.commands.CommandTestUtil.DESC_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.guest.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.guest.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.guest.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.guest.logic.commands.CommandTestUtil.showGuestAtIndex;
@@ -54,8 +53,7 @@ public class EditCommandTest {
         Guest lastGuest = model.getFilteredGuestList().get(indexLastGuest.getZeroBased());
 
         GuestBuilder guestInList = new GuestBuilder(lastGuest);
-        Guest editedGuest = guestInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-                .withTags(VALID_TAG_HUSBAND).build();
+        Guest editedGuest = guestInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB).build();
 
         EditGuestDescriptor descriptor = new EditGuestDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_HUSBAND).build();
