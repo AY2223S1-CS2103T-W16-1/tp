@@ -99,8 +99,6 @@ public class EditCommandParserTest {
                 NumberOfGuests.MESSAGE_CONSTRAINTS); // invalid number of guests
         assertParseFailure(parser, "1" + INVALID_IS_ROOM_CLEAN_DESC,
                 IsRoomClean.MESSAGE_CONSTRAINTS); // invalid is room clean
-        assertParseFailure(parser, "1" + INVALID_REQUEST_DESC,
-                Request.MESSAGE_CONSTRAINTS); // invalid is request
 
         // invalid phone followed by valid email
         assertParseFailure(parser, "1" + INVALID_PHONE_DESC + EMAIL_DESC_AMY, Phone.MESSAGE_CONSTRAINTS);
@@ -120,12 +118,11 @@ public class EditCommandParserTest {
 
         String userInput = targetIndex.getOneBased() + PHONE_DESC_BOB + EMAIL_DESC_AMY
                 + DATE_RANGE_DESC_AMY + NUMBER_OF_GUESTS_DESC_AMY + NAME_DESC_AMY
-                + IS_ROOM_CLEAN_DESC_AMY + REQUEST_DESC_AMY;
+                + IS_ROOM_CLEAN_DESC_AMY;
 
         EditGuestDescriptor descriptor = new EditGuestDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_AMY).withDateRange(VALID_DATE_RANGE_AMY)
                 .withNumberOfGuests(VALID_NUMBER_OF_GUESTS_AMY).withIsRoomClean(VALID_IS_ROOM_CLEAN_AMY)
-                .withRequests(VALID_REQUEST_AMY)
                 .build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -182,12 +179,6 @@ public class EditCommandParserTest {
         descriptor = new EditGuestDescriptorBuilder().withIsRoomClean(VALID_IS_ROOM_CLEAN_AMY).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
-
-        // request
-        userInput = targetIndex.getOneBased() + REQUEST_DESC_AMY;
-        descriptor = new EditGuestDescriptorBuilder().withRequests(VALID_REQUEST_AMY).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
-        assertParseSuccess(parser, userInput, expectedCommand);
     }
 
     @Test
@@ -196,15 +187,14 @@ public class EditCommandParserTest {
 
         String userInput = targetIndex.getOneBased() + PHONE_DESC_AMY + EMAIL_DESC_AMY
                 + DATE_RANGE_DESC_AMY + NUMBER_OF_GUESTS_DESC_AMY + IS_ROOM_CLEAN_DESC_AMY
-                + REQUEST_DESC_AMY + PHONE_DESC_AMY
+                + PHONE_DESC_AMY
                 + EMAIL_DESC_AMY + DATE_RANGE_DESC_AMY + NUMBER_OF_GUESTS_DESC_AMY + IS_ROOM_CLEAN_DESC_AMY
                 + PHONE_DESC_BOB + EMAIL_DESC_BOB + DATE_RANGE_DESC_BOB
-                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB;
+                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB;
 
         EditGuestDescriptor descriptor = new EditGuestDescriptorBuilder().withPhone(VALID_PHONE_BOB)
                 .withEmail(VALID_EMAIL_BOB).withDateRange(VALID_DATE_RANGE_BOB)
                 .withNumberOfGuests(VALID_NUMBER_OF_GUESTS_BOB).withIsRoomClean(VALID_IS_ROOM_CLEAN_BOB)
-                .withRequests(VALID_REQUEST_BOB)
                 .build();
 
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);

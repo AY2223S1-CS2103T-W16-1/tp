@@ -60,10 +60,6 @@ public class EditCommandParser implements Parser<EditCommand> {
             editGuestDescriptor.setIsRoomClean(ParserUtil
                     .parseIsRoomClean(argMultimap.getValue(PREFIX_IS_ROOM_CLEAN).get()));
         }
-        if (argMultimap.getValue(PREFIX_REQUESTS).isPresent()) {
-            editGuestDescriptor.setRequests(ParserUtil
-                    .parseRequests(argMultimap.getValue(PREFIX_REQUESTS).get()));
-        }
 
         if (!editGuestDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);

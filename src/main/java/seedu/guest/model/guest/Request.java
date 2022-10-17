@@ -10,6 +10,13 @@ public class Request {
     public final String requests;
 
     /**
+     * There are no request.
+     */
+    public Request() {
+        this.requests = "";
+    }
+
+    /**
      * The constructor of request.
      * @param request
      */
