@@ -21,12 +21,15 @@ import static seedu.guest.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.guest.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.guest.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
+import static seedu.guest.logic.commands.CommandTestUtil.REQUEST_DESC_AMY;
+import static seedu.guest.logic.commands.CommandTestUtil.REQUEST_DESC_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_DATE_RANGE_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_IS_ROOM_CLEAN_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_NUMBER_OF_GUESTS_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static seedu.guest.logic.commands.CommandTestUtil.VALID_REQUEST_BOB;
 import static seedu.guest.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.guest.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.guest.testutil.TypicalGuests.BOB;
@@ -52,38 +55,46 @@ public class AddCommandParserTest {
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
-                + DATE_RANGE_DESC_BOB + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB,
+                + DATE_RANGE_DESC_BOB + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB,
                 new AddCommand(expectedGuest));
 
         // multiple names - last name accepted
         assertParseSuccess(parser, NAME_DESC_AMY + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
-                + DATE_RANGE_DESC_BOB + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB,
+                + DATE_RANGE_DESC_BOB + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB,
                 new AddCommand(expectedGuest));
 
         // multiple phones - last phone accepted
         assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_AMY + PHONE_DESC_BOB + EMAIL_DESC_BOB
-                + DATE_RANGE_DESC_BOB + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB,
+                + DATE_RANGE_DESC_BOB + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB,
                 new AddCommand(expectedGuest));
 
         // multiple emails - last email accepted
         assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_AMY + EMAIL_DESC_BOB
-                + DATE_RANGE_DESC_BOB + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB,
+                + DATE_RANGE_DESC_BOB + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB,
                 new AddCommand(expectedGuest));
 
         // multiple date ranges - last date range accepted
         assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + DATE_RANGE_DESC_AMY
-                + DATE_RANGE_DESC_BOB + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB,
+                + DATE_RANGE_DESC_BOB + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB,
                 new AddCommand(expectedGuest));
 
         // multiple numbers of guests - last number of guests accepted
         assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + DATE_RANGE_DESC_BOB + NUMBER_OF_GUESTS_DESC_AMY
-                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB, new AddCommand(expectedGuest));
+                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB,
+                new AddCommand(expectedGuest));
 
         // multiple is room clean - last is room clean accepted
         assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + DATE_RANGE_DESC_BOB + NUMBER_OF_GUESTS_DESC_BOB
-                + IS_ROOM_CLEAN_DESC_AMY + IS_ROOM_CLEAN_DESC_BOB, new AddCommand(expectedGuest));
+                + IS_ROOM_CLEAN_DESC_AMY + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB,
+                new AddCommand(expectedGuest));
+
+        // multiple is request - last guest request accepted
+        assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
+                        + DATE_RANGE_DESC_BOB + NUMBER_OF_GUESTS_DESC_BOB
+                        + IS_ROOM_CLEAN_DESC_AMY + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB,
+                new AddCommand(expectedGuest));
     }
 
     @Test
@@ -92,37 +103,42 @@ public class AddCommandParserTest {
 
         // missing name prefix
         assertParseFailure(parser, VALID_NAME_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + DATE_RANGE_DESC_BOB
-                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB,
+                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB,
                 expectedMessage);
 
         // missing phone prefix
         assertParseFailure(parser, NAME_DESC_BOB + VALID_PHONE_BOB + EMAIL_DESC_BOB + DATE_RANGE_DESC_BOB
-                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB,
+                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB,
                 expectedMessage);
 
         // missing email prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + VALID_EMAIL_BOB + DATE_RANGE_DESC_BOB
-                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB,
+                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB,
                 expectedMessage);
 
         // missing date range prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + VALID_DATE_RANGE_BOB
-                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB,
+                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB,
                 expectedMessage);
 
         // missing number of guests prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + DATE_RANGE_DESC_BOB
-                + VALID_NUMBER_OF_GUESTS_BOB + IS_ROOM_CLEAN_DESC_BOB,
+                + VALID_NUMBER_OF_GUESTS_BOB + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB,
                 expectedMessage);
 
         // missing is room clean prefix
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + DATE_RANGE_DESC_BOB
-                + NUMBER_OF_GUESTS_DESC_BOB + VALID_IS_ROOM_CLEAN_BOB,
+                + NUMBER_OF_GUESTS_DESC_BOB + VALID_IS_ROOM_CLEAN_BOB + REQUEST_DESC_BOB,
+                expectedMessage);
+
+        // missing is request prefix
+        assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + DATE_RANGE_DESC_BOB
+                        + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB + VALID_REQUEST_BOB,
                 expectedMessage);
 
         // all prefixes missing
         assertParseFailure(parser, VALID_NAME_BOB + VALID_PHONE_BOB + VALID_EMAIL_BOB + VALID_DATE_RANGE_BOB
-                + VALID_NUMBER_OF_GUESTS_BOB + VALID_IS_ROOM_CLEAN_BOB,
+                + VALID_NUMBER_OF_GUESTS_BOB + VALID_IS_ROOM_CLEAN_BOB + VALID_REQUEST_BOB,
                 expectedMessage);
     }
 
@@ -130,27 +146,27 @@ public class AddCommandParserTest {
     public void parse_invalidValue_failure() {
         // invalid name
         assertParseFailure(parser, INVALID_NAME_DESC + PHONE_DESC_BOB + EMAIL_DESC_BOB + DATE_RANGE_DESC_BOB
-                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB,
+                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB,
                 Name.MESSAGE_CONSTRAINTS);
 
         // invalid phone
         assertParseFailure(parser, NAME_DESC_BOB + INVALID_PHONE_DESC + EMAIL_DESC_BOB + DATE_RANGE_DESC_BOB
-                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB,
+                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB,
                 Phone.MESSAGE_CONSTRAINTS);
 
         // invalid email
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + INVALID_EMAIL_DESC + DATE_RANGE_DESC_BOB
-                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB,
+                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB,
                 Email.MESSAGE_CONSTRAINTS);
 
         // invalid date range
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + INVALID_DATE_RANGE_DESC
-                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB,
+                + NUMBER_OF_GUESTS_DESC_BOB + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB,
                 DateRange.MESSAGE_CONSTRAINTS);
 
         // invalid number of guests
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + DATE_RANGE_DESC_BOB
-                + INVALID_NUMBER_OF_GUESTS_DESC + IS_ROOM_CLEAN_DESC_BOB,
+                + INVALID_NUMBER_OF_GUESTS_DESC + IS_ROOM_CLEAN_DESC_BOB + REQUEST_DESC_BOB,
                 NumberOfGuests.MESSAGE_CONSTRAINTS);
 
         // invalid is room clean
@@ -160,7 +176,7 @@ public class AddCommandParserTest {
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + PHONE_DESC_BOB + EMAIL_DESC_BOB + DATE_RANGE_DESC_BOB
-                + NUMBER_OF_GUESTS_DESC_BOB + INVALID_IS_ROOM_CLEAN_DESC,
+                + NUMBER_OF_GUESTS_DESC_BOB + INVALID_IS_ROOM_CLEAN_DESC + REQUEST_DESC_BOB,
                 Name.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble

@@ -1,12 +1,9 @@
 package seedu.guest.testutil;
 
-import seedu.guest.model.guest.DateRange;
-import seedu.guest.model.guest.Email;
-import seedu.guest.model.guest.Guest;
-import seedu.guest.model.guest.IsRoomClean;
-import seedu.guest.model.guest.Name;
-import seedu.guest.model.guest.NumberOfGuests;
-import seedu.guest.model.guest.Phone;
+import seedu.guest.model.guest.*;
+import seedu.guest.model.guest.Request;
+
+import java.util.Optional;
 
 /**
  * A utility class to help with building Guest objects.
@@ -19,6 +16,8 @@ public class GuestBuilder {
     public static final String DEFAULT_DATE_RANGE = "13/09/22 - 15/09/22";
     public static final String DEFAULT_NUMBER_OF_GUESTS = "1";
     public static final String DEFAULT_IS_ROOM_CLEAN = "yes";
+    public static final String DEFAULT_REQUESTS = "Room service";
+
 
     private Name name;
     private Phone phone;
@@ -26,6 +25,7 @@ public class GuestBuilder {
     private DateRange dateRange;
     private NumberOfGuests numberOfGuests;
     private IsRoomClean isRoomClean;
+    private Request request;
 
     /**
      * Creates a {@code GuestBuilder} with the default details.
@@ -37,6 +37,7 @@ public class GuestBuilder {
         dateRange = new DateRange(DEFAULT_DATE_RANGE);
         numberOfGuests = new NumberOfGuests(DEFAULT_NUMBER_OF_GUESTS);
         isRoomClean = new IsRoomClean(DEFAULT_IS_ROOM_CLEAN);
+        request = new Request(DEFAULT_REQUESTS);
     }
 
     /**
@@ -49,6 +50,7 @@ public class GuestBuilder {
         dateRange = guestToCopy.getDateRange();
         numberOfGuests = guestToCopy.getNumberOfGuests();
         isRoomClean = guestToCopy.getIsRoomClean();
+        request = guestToCopy.getRequests();
     }
 
     /**
@@ -99,8 +101,13 @@ public class GuestBuilder {
         return this;
     }
 
+    public GuestBuilder withRequests(String requests) {
+        this.request = new Request(requests);
+        return this;
+    }
+
     public Guest build() {
-        return new Guest(name, phone, email, dateRange, numberOfGuests, isRoomClean);
+        return new Guest(name, phone, email, dateRange, numberOfGuests, isRoomClean, request);
     }
 
 }

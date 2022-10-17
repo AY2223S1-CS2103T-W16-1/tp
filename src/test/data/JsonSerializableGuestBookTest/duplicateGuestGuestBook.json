@@ -5,13 +5,15 @@
     "email": "alice@example.com",
     "dateRange": "13/09/22 - 15/09/22",
     "numberOfGuests" : "1",
-    "isRoomClean" : "yes"
+    "isRoomClean" : "yes",
+    "requests" : "No"
   }, {
     "name": "Alice Pauline",
     "phone": "94351253",
     "email": "pauline@example.com",
     "dateRange": "13/09/22 - 15/09/22",
     "numberOfGuests" : "1",
-    "isRoomClean" : "yes"
+    "isRoomClean" : "yes",
+    "requests" : "No"
   } ]
 }

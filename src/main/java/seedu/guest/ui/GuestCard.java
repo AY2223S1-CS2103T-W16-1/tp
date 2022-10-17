@@ -39,6 +39,8 @@ public class GuestCard extends UiPart<Region> {
     private Label dateRange;
     @FXML
     private Label isRoomClean;
+    @FXML
+    private Label request;
 
     /**
      * Creates a {@code GuestCode} with the given {@code Guest} and index to display.
@@ -53,6 +55,7 @@ public class GuestCard extends UiPart<Region> {
         dateRange.setText(guest.getDateRange().value);
         numberOfGuests.setText("No. of Guests: " + guest.getNumberOfGuests().value);
         isRoomClean.setText("Room Cleaned: " + guest.getIsRoomClean().value);
+        request.setText("Guest Request: " + guest.getRequests().requests);
     }
 
     @Override

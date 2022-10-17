@@ -3,6 +3,7 @@ package seedu.guest.model.guest;
 import static seedu.guest.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Represents a Guest in the guest book.
@@ -19,21 +20,21 @@ public class Guest {
     private final DateRange dateRange;
     private final NumberOfGuests numberOfGuests;
     private final IsRoomClean isRoomClean;
-    private final Requests requests;
+    private final Request request;
 
     /**
      * Every field must be present and not null.
      */
     public Guest(Name name, Phone phone, Email email, DateRange dateRange,
-                 NumberOfGuests numberOfGuests, IsRoomClean isRoomClean, Requests requests) {
-        requireAllNonNull(name, phone, email, dateRange, numberOfGuests, isRoomClean, requests);
+                 NumberOfGuests numberOfGuests, IsRoomClean isRoomClean, Request request) {
+        requireAllNonNull(name, phone, email, dateRange, numberOfGuests, isRoomClean);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.dateRange = dateRange;
         this.numberOfGuests = numberOfGuests;
         this.isRoomClean = isRoomClean;
-        this.requests = requests;
+        this.request = request;
     }
 
     public Name getName() {
@@ -60,8 +61,8 @@ public class Guest {
         return isRoomClean;
     }
 
-    public Requests getRequests() {
-        return requests;
+    public Request getRequests() {
+        return request;
     }
 
     /**
@@ -105,7 +106,7 @@ public class Guest {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, dateRange, numberOfGuests, isRoomClean, requests);
+        return Objects.hash(name, phone, email, dateRange, numberOfGuests, isRoomClean, request);
     }
 
     @Override
@@ -122,7 +123,7 @@ public class Guest {
                 .append(getNumberOfGuests())
                 .append("; Is Room Clean: ")
                 .append(getIsRoomClean())
-                .append("; Guest's Requests: ")
+                .append("; Guest Request: ")
                 .append(getRequests());
 
         return builder.toString();

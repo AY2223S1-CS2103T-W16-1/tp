@@ -10,6 +10,7 @@ import static seedu.guest.logic.commands.CommandTestUtil.VALID_IS_ROOM_CLEAN_BOB
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_NUMBER_OF_GUESTS_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static seedu.guest.logic.commands.CommandTestUtil.VALID_REQUEST_BOB;
 
 import org.junit.jupiter.api.Test;
 
@@ -30,7 +31,7 @@ public class EditGuestDescriptorTest {
         // null -> returns false
         assertFalse(DESC_AMY.equals(null));
 
-        // different types -> returns false
+        // different types -> returns false![]
         assertFalse(DESC_AMY.equals(5));
 
         // different values -> returns false
@@ -58,6 +59,9 @@ public class EditGuestDescriptorTest {
 
         // different is room clean -> returns false
         editedAmy = new EditGuestDescriptorBuilder(DESC_AMY).withIsRoomClean(VALID_IS_ROOM_CLEAN_BOB).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
+
+        editedAmy = new EditGuestDescriptorBuilder(DESC_AMY).withRequests(VALID_REQUEST_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
     }
 }

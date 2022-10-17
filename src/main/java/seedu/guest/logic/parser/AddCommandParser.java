@@ -7,6 +7,7 @@ import static seedu.guest.logic.parser.CliSyntax.PREFIX_IS_ROOM_CLEAN;
 import static seedu.guest.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.guest.logic.parser.CliSyntax.PREFIX_NUMBER_OF_GUESTS;
 import static seedu.guest.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.guest.logic.parser.CliSyntax.PREFIX_REQUESTS;
 
 import java.util.stream.Stream;
 
@@ -19,6 +20,7 @@ import seedu.guest.model.guest.IsRoomClean;
 import seedu.guest.model.guest.Name;
 import seedu.guest.model.guest.NumberOfGuests;
 import seedu.guest.model.guest.Phone;
+import seedu.guest.model.guest.Request;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -33,10 +35,10 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_DATE_RANGE,
-                        PREFIX_NUMBER_OF_GUESTS, PREFIX_IS_ROOM_CLEAN);
+                        PREFIX_NUMBER_OF_GUESTS, PREFIX_IS_ROOM_CLEAN, PREFIX_REQUESTS);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
-                PREFIX_DATE_RANGE, PREFIX_NUMBER_OF_GUESTS, PREFIX_IS_ROOM_CLEAN)
+                PREFIX_DATE_RANGE, PREFIX_NUMBER_OF_GUESTS, PREFIX_IS_ROOM_CLEAN, PREFIX_REQUESTS)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
@@ -49,8 +51,10 @@ public class AddCommandParser implements Parser<AddCommand> {
                 .parseNumberOfGuests(argMultimap.getValue(PREFIX_NUMBER_OF_GUESTS).get());
         IsRoomClean isRoomClean = ParserUtil
                 .parseIsRoomClean(argMultimap.getValue(PREFIX_IS_ROOM_CLEAN).get());
+        Request request = ParserUtil
+                .parseRequests(argMultimap.getValue(PREFIX_REQUESTS).get());
 
-        Guest guest = new Guest(name, phone, email, dateRange, numberOfGuests, isRoomClean);
+        Guest guest = new Guest(name, phone, email, dateRange, numberOfGuests, isRoomClean, request);
         return new AddCommand(guest);
     }
 

@@ -5,12 +5,8 @@ import static java.util.Objects.requireNonNull;
 import seedu.guest.commons.core.index.Index;
 import seedu.guest.commons.util.StringUtil;
 import seedu.guest.logic.parser.exceptions.ParseException;
-import seedu.guest.model.guest.DateRange;
-import seedu.guest.model.guest.Email;
-import seedu.guest.model.guest.IsRoomClean;
-import seedu.guest.model.guest.Name;
-import seedu.guest.model.guest.NumberOfGuests;
-import seedu.guest.model.guest.Phone;
+import seedu.guest.model.guest.*;
+import seedu.guest.model.guest.Request;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -120,5 +116,14 @@ public class ParserUtil {
             throw new ParseException(IsRoomClean.MESSAGE_CONSTRAINTS);
         }
         return new IsRoomClean(trimmedIsRoomClean);
+    }
+
+    public static Request parseRequests(String requests) throws ParseException {
+        requireNonNull(requests);
+        String trimmedRequests = requests.trim();
+        if (!IsRoomClean.isValidIsRoomClean(trimmedRequests)) {
+            throw new ParseException(Request.MESSAGE_CONSTRAINTS);
+        }
+        return new Request(trimmedRequests);
     }
 }

@@ -290,7 +290,7 @@ _{Explain here how the data archiving feature will be implemented}_
 * To know when the guests check in and check out
 * To keep track of the guests' bills
 * To know where the guests book the hotel from
-* To note down all the requirements/requests that the guests asked for
+* To note down all the requirements/request that the guests asked for
 * To note down the status of the room, if the room is cleaned or not cleaned
 
 ### User stories
@@ -323,7 +323,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | hotel manager            | be able to deduct from the bill of the hotel guest                 | update it if there are any changes                                |
 | `* *`    | hotel cleaner            | view if a room has been cleaned                                    | do not waste time cleaning the room again                         |
 | `* *`    | hotel cleaner            | mark a room as clean                                               | other cleaners will not need to waste time cleaning the room again |
-| `* *`    | butler                   | get the details of any special requests from the guests            | serve the guest as requested                                      |
+| `* *`    | butler                   | get the details of any special request from the guests            | serve the guest as requested                                      |
 | `* `     | hotel manager            | get the details of what the IC number of guests is                 | ensure our hotel safety                                           |
 | `* `     | hotel manager            | get information about how many rooms are cleaned                   | decide to let new guests in                                       |
 | `* `     | hotel manager            | get the details of where the guests booked their hotel stay from   | decide which booking platform I need to pay more attention to     |
@@ -344,7 +344,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. User searches for guest 
 2. Guest is not found in list of guests 
-3. User requests to add a guest to the list
+3. User request to add a guest to the list
 4. GuestBook adds the guest
     
     Use case ends.
@@ -364,9 +364,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to list guests
+1.  User request to list guests
 2.  GuestBook shows a list of guests
-3.  User requests to delete a specific guest in the list
+3.  User request to delete a specific guest in the list
 4.  GuestBook deletes the guest
 
     Use case ends.
@@ -387,7 +387,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to list guests
+1.  User request to list guests
 2.  GuestBook shows a list of guests
 
     Use case ends.
@@ -402,7 +402,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests exit the program
+1. User request exit the program
 2. GuestBook shows an exit message
 3. GuestBook exits the program
 

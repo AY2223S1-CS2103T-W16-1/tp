@@ -4,13 +4,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.guest.commons.exceptions.IllegalValueException;
-import seedu.guest.model.guest.DateRange;
-import seedu.guest.model.guest.Email;
-import seedu.guest.model.guest.Guest;
-import seedu.guest.model.guest.IsRoomClean;
-import seedu.guest.model.guest.Name;
-import seedu.guest.model.guest.NumberOfGuests;
-import seedu.guest.model.guest.Phone;
+import seedu.guest.model.guest.*;
+import seedu.guest.model.guest.Request;
 
 /**
  * Jackson-friendly version of {@link Guest}.
@@ -25,6 +20,7 @@ class JsonAdaptedGuest {
     private final String dateRange;
     private final String numberOfGuests;
     private final String isRoomClean;
+    private final String requests;
 
     /**
      * Constructs a {@code JsonAdaptedGuest} with the given guest details.
@@ -33,13 +29,14 @@ class JsonAdaptedGuest {
     public JsonAdaptedGuest(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("dateRange") String dateRange,
             @JsonProperty("numberOfGuests") String numberOfGuests,
-            @JsonProperty("isRoomClean") String isRoomClean) {
+            @JsonProperty("isRoomClean") String isRoomClean, @JsonProperty("requests") String requests) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.dateRange = dateRange;
         this.numberOfGuests = numberOfGuests;
         this.isRoomClean = isRoomClean;
+        this.requests = requests;
     }
 
     /**
@@ -52,6 +49,7 @@ class JsonAdaptedGuest {
         dateRange = source.getDateRange().value;
         numberOfGuests = source.getNumberOfGuests().value;
         isRoomClean = source.getIsRoomClean().value;
+        requests = source.getRequests().requests;
     }
 
     /**
@@ -112,6 +110,16 @@ class JsonAdaptedGuest {
         }
         final IsRoomClean modelIsRoomClean = new IsRoomClean(isRoomClean);
 
-        return new Guest(modelName, modelPhone, modelEmail, modelDateRange, modelNumberOfGuests, modelIsRoomClean);
+        if (requests == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Request.class.getSimpleName()));
+        }
+        if (!Request.isValidRequests((requests))) {
+            throw new IllegalValueException(Request.MESSAGE_CONSTRAINTS);
+        }
+        final Request modelRequest = new Request(requests);
+
+        return new Guest(modelName, modelPhone, modelEmail, modelDateRange,
+                modelNumberOfGuests, modelIsRoomClean, modelRequest);
     }
 }

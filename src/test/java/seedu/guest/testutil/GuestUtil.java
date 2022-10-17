@@ -6,6 +6,7 @@ import static seedu.guest.logic.parser.CliSyntax.PREFIX_IS_ROOM_CLEAN;
 import static seedu.guest.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.guest.logic.parser.CliSyntax.PREFIX_NUMBER_OF_GUESTS;
 import static seedu.guest.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.guest.logic.parser.CliSyntax.PREFIX_REQUESTS;
 
 import seedu.guest.logic.commands.AddCommand;
 import seedu.guest.logic.commands.EditCommand.EditGuestDescriptor;
@@ -34,6 +35,7 @@ public class GuestUtil {
         sb.append(PREFIX_DATE_RANGE + guest.getDateRange().value + " ");
         sb.append(PREFIX_NUMBER_OF_GUESTS + guest.getNumberOfGuests().value + " ");
         sb.append(PREFIX_IS_ROOM_CLEAN + guest.getIsRoomClean().value + " ");
+        sb.append(PREFIX_REQUESTS + guest.getRequests().requests + " ");
         return sb.toString();
     }
 
@@ -51,6 +53,8 @@ public class GuestUtil {
                 .append(numberOfGuests.value).append(" "));
         descriptor.getIsRoomClean().ifPresent(isRoomClean -> sb.append(PREFIX_IS_ROOM_CLEAN)
                 .append(isRoomClean.value).append(" "));
+        descriptor.getRequests().ifPresent(requests -> sb.append(PREFIX_REQUESTS)
+                .append(requests.requests).append(" "));
         return sb.toString();
     }
 }

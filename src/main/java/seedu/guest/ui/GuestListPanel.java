@@ -32,7 +32,7 @@ public class GuestListPanel extends UiPart<Region> {
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Guest} using a {@code GuestCard}.
      */
-    class GuestListViewCell extends ListCell<Guest> {
+    static class GuestListViewCell extends ListCell<Guest> {
         @Override
         protected void updateItem(Guest guest, boolean empty) {
             super.updateItem(guest, empty);

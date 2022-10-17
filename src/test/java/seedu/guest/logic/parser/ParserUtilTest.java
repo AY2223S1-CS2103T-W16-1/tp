@@ -14,6 +14,7 @@ import seedu.guest.model.guest.IsRoomClean;
 import seedu.guest.model.guest.Name;
 import seedu.guest.model.guest.NumberOfGuests;
 import seedu.guest.model.guest.Phone;
+import seedu.guest.model.guest.Request;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
@@ -22,6 +23,7 @@ public class ParserUtilTest {
     private static final String INVALID_DATE_RANGE = "13/09/22 - 13/09/22";
     private static final String INVALID_NUMBER_OF_GUESTS = "5";
     private static final String INVALID_IS_ROOM_CLEAN = "false";
+    private static final String INVALID_REQUEST = " ";
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_PHONE = "123456";
@@ -29,6 +31,7 @@ public class ParserUtilTest {
     private static final String VALID_DATE_RANGE = "13/09/22 - 15/09/22";
     private static final String VALID_NUMBER_OF_GUESTS = "4";
     private static final String VALID_IS_ROOM_CLEAN = "yes";
+    private static final String VALID_REQUEST = "I want to book a room service";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -188,5 +191,28 @@ public class ParserUtilTest {
         String isRoomCleanWithWhitespace = WHITESPACE + VALID_IS_ROOM_CLEAN + WHITESPACE;
         IsRoomClean expectedIsRoomClean = new IsRoomClean(VALID_IS_ROOM_CLEAN);
         assertEquals(expectedIsRoomClean, ParserUtil.parseIsRoomClean(isRoomCleanWithWhitespace));
+    }
+
+    @Test
+    public void parseRequest_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseRequests((String) null));
+    }
+
+    @Test
+    public void parseRequest_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseRequests(INVALID_REQUEST));
+    }
+
+    @Test
+    public void parseRequests_validValueWithWhitespace_returnsTrimmedRequests() throws Exception {
+        String requestWithWhitespace = WHITESPACE + VALID_IS_ROOM_CLEAN + WHITESPACE;
+        Request expectedRequest = new Request(VALID_REQUEST);
+        assertEquals(expectedRequest, ParserUtil.parseIsRoomClean(requestWithWhitespace));
+    }
+
+    @Test
+    public void parseRequests_validValueWithoutWhitespace_returnsRequests() throws Exception {
+        Request expectedRequest = new Request(VALID_REQUEST);
+        assertEquals(expectedRequest, ParserUtil.parseRequests(VALID_REQUEST));
     }
 }
