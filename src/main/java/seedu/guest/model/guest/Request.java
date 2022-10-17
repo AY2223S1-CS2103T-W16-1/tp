@@ -10,10 +10,17 @@ public class Request {
     public final String requests;
 
     /**
+<<<<<<< Updated upstream
      * There are no request.
      */
     public Request() {
         this.requests = "";
+=======
+     * When there are no request
+     */
+    public Request() {
+        requests = "";
+>>>>>>> Stashed changes
     }
 
     /**

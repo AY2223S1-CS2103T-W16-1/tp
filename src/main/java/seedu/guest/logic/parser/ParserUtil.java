@@ -133,7 +133,7 @@ public class ParserUtil {
     public static Request parseRequests(String requests) throws ParseException {
         requireNonNull(requests);
         String trimmedRequests = requests.trim();
-        if (!IsRoomClean.isValidIsRoomClean(trimmedRequests)) {
+        if (!Request.isValidRequests(trimmedRequests)) {
             throw new ParseException(Request.MESSAGE_CONSTRAINTS);
         }
         return new Request(trimmedRequests);
