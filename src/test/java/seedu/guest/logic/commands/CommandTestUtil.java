@@ -68,7 +68,6 @@ public class CommandTestUtil {
             + PREFIX_IS_ROOM_CLEAN + "true"; // 'true' not allowed as is room clean
     public static final String INVALID_REQUEST_DESC = " "
             + PREFIX_REQUESTS + " ";  // You cannot type whitespace in request
-
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 

@@ -21,7 +21,6 @@ import static seedu.guest.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.guest.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.guest.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
-import static seedu.guest.logic.commands.CommandTestUtil.REQUEST_DESC_AMY;
 import static seedu.guest.logic.commands.CommandTestUtil.REQUEST_DESC_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_DATE_RANGE_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;

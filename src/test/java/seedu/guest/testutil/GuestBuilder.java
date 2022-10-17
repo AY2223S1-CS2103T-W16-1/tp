@@ -1,6 +1,5 @@
 package seedu.guest.testutil;
 
-import java.util.Optional;
 import seedu.guest.model.guest.Bill;
 import seedu.guest.model.guest.DateRange;
 import seedu.guest.model.guest.Email;
