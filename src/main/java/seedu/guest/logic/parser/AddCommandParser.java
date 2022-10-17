@@ -54,11 +54,9 @@ public class AddCommandParser implements Parser<AddCommand> {
                 .parseIsRoomClean(argMultimap.getValue(PREFIX_IS_ROOM_CLEAN).get());
         Request request = ParserUtil
                 .parseRequests(argMultimap.getValue(PREFIX_REQUESTS).get());
-
-        Guest guest = new Guest(name, phone, email, dateRange, numberOfGuests, isRoomClean, request);
         Bill bill = new Bill();
 
-        Guest guest = new Guest(name, phone, email, dateRange, numberOfGuests, isRoomClean, bill);
+        Guest guest = new Guest(name, phone, email, dateRange, numberOfGuests, isRoomClean, bill, request);
         return new AddCommand(guest);
     }
 

@@ -106,7 +106,7 @@ public class Guest {
                 && otherGuest.getDateRange().equals(getDateRange())
                 && otherGuest.getNumberOfGuests().equals(getNumberOfGuests())
                 && otherGuest.getIsRoomClean().equals(getIsRoomClean())
-                && otherGuest.getRequests().equals(getRequests());
+                && otherGuest.getRequests().equals(getRequests())
                 && otherGuest.getBill().equals(getBill());
     }
 
@@ -131,7 +131,7 @@ public class Guest {
                 .append("; Is Room Clean: ")
                 .append(getIsRoomClean())
                 .append("; Guest Request: ")
-                .append(getRequests());
+                .append(getRequests())
                 .append("; Bill: ")
                 .append(getBill());
 

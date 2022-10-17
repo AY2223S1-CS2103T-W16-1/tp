@@ -37,7 +37,7 @@ class JsonAdaptedGuest {
     public JsonAdaptedGuest(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("dateRange") String dateRange,
             @JsonProperty("numberOfGuests") String numberOfGuests,
-            @JsonProperty("isRoomClean") String isRoomClean, @JsonProperty("requests") String getRequests,
+            @JsonProperty("isRoomClean") String isRoomClean, @JsonProperty("requests") String requests,
             @JsonProperty("bill") String bill) {
         this.name = name;
         this.phone = phone;
@@ -136,10 +136,6 @@ class JsonAdaptedGuest {
         }
         final Request modelRequest = new Request(requests);
 
-        return new Guest(modelName, modelPhone, modelEmail, modelDateRange,
-                modelNumberOfGuests, modelIsRoomClean, modelRequest);
-
-
         // Bill
         if (bill == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -151,6 +147,6 @@ class JsonAdaptedGuest {
         final Bill modelBill = new Bill(bill);
 
         return new Guest(modelName, modelPhone, modelEmail, modelDateRange, modelNumberOfGuests, modelIsRoomClean,
-                modelBill);
+                modelBill, modelRequest);
     }
 }

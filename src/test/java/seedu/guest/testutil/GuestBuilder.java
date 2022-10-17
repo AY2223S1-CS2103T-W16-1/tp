@@ -114,6 +114,7 @@ public class GuestBuilder {
      */
     public GuestBuilder withRequests(String requests) {
         this.request = new Request(requests);
+        return this;
     }
     /**
      * Sets the {@code Bill} of the {@code Guest} that we are building.
