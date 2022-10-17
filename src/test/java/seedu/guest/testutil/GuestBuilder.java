@@ -1,15 +1,20 @@
 package seedu.guest.testutil;
 
-import seedu.guest.model.guest.*;
-import seedu.guest.model.guest.Request;
-
 import java.util.Optional;
+import seedu.guest.model.guest.Bill;
+import seedu.guest.model.guest.DateRange;
+import seedu.guest.model.guest.Email;
+import seedu.guest.model.guest.Guest;
+import seedu.guest.model.guest.IsRoomClean;
+import seedu.guest.model.guest.Name;
+import seedu.guest.model.guest.NumberOfGuests;
+import seedu.guest.model.guest.Phone;
+import seedu.guest.model.guest.Request;
 
 /**
  * A utility class to help with building Guest objects.
  */
 public class GuestBuilder {
-
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
@@ -17,7 +22,7 @@ public class GuestBuilder {
     public static final String DEFAULT_NUMBER_OF_GUESTS = "1";
     public static final String DEFAULT_IS_ROOM_CLEAN = "yes";
     public static final String DEFAULT_REQUESTS = "Room service";
-
+    public static final String DEFAULT_BILL = "0.00";
 
     private Name name;
     private Phone phone;
@@ -26,6 +31,7 @@ public class GuestBuilder {
     private NumberOfGuests numberOfGuests;
     private IsRoomClean isRoomClean;
     private Request request;
+    private Bill bill;
 
     /**
      * Creates a {@code GuestBuilder} with the default details.
@@ -38,6 +44,7 @@ public class GuestBuilder {
         numberOfGuests = new NumberOfGuests(DEFAULT_NUMBER_OF_GUESTS);
         isRoomClean = new IsRoomClean(DEFAULT_IS_ROOM_CLEAN);
         request = new Request(DEFAULT_REQUESTS);
+        bill = new Bill(DEFAULT_BILL);
     }
 
     /**
@@ -51,6 +58,7 @@ public class GuestBuilder {
         numberOfGuests = guestToCopy.getNumberOfGuests();
         isRoomClean = guestToCopy.getIsRoomClean();
         request = guestToCopy.getRequests();
+        bill = guestToCopy.getBill();
     }
 
     /**
@@ -101,13 +109,23 @@ public class GuestBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code requests} of the {@code Request} that we are building.
+     */
     public GuestBuilder withRequests(String requests) {
         this.request = new Request(requests);
+    }
+    /**
+     * Sets the {@code Bill} of the {@code Guest} that we are building.
+     */
+    public GuestBuilder withBill(String bill) {
+        this.bill = new Bill(bill);
         return this;
     }
 
     public Guest build() {
-        return new Guest(name, phone, email, dateRange, numberOfGuests, isRoomClean, request);
+        return new Guest(name, phone, email, dateRange, numberOfGuests, 
+            isRoomClean, bill, request);
     }
 
 }

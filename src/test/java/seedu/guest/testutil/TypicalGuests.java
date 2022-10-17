@@ -30,50 +30,51 @@ public class TypicalGuests {
             .withEmail("alice@example.com")
             .withDateRange("13/09/22 - 15/09/22").withNumberOfGuests("1")
             .withPhone("94351253").withIsRoomClean("yes")
-            .withRequests("hi")
+            .withRequests("hi").withBill("0")
             .build();
     public static final Guest BENSON = new GuestBuilder().withName("Benson Meier")
             .withEmail("johnd@example.com")
             .withDateRange("30/09/22 - 02/10/22").withNumberOfGuests("2")
-            .withPhone("98765432").withIsRoomClean("yes")
-            .withRequests("no hi")
+            .withPhone("98765432").withIsRoomClean("yes").withBill("10")
+            .withRequests("I wanna food")
             .build();
     public static final Guest CARL = new GuestBuilder().withName("Carl Kurz").withPhone("95352563")
             .withEmail("heinz@example.com").withDateRange("30/12/22 - 02/01/23")
             .withNumberOfGuests("3").withIsRoomClean("no")
-            .withRequests("room service")
+            .withRequests("I wanna food").withBill("19.99")
             .build();
     public static final Guest DANIEL = new GuestBuilder().withName("Daniel Meier").withPhone("87652533")
             .withEmail("cornelia@example.com").withDateRange("29/05/23 - 03/06/23")
             .withNumberOfGuests("4").withIsRoomClean("yes")
-            .withRequests("I wanna food")
+            .withRequests("I wanna food").withBill("50")
             .build();
     public static final Guest ELLE = new GuestBuilder().withName("Elle Meyer").withPhone("9482224")
             .withEmail("werner@example.com").withDateRange("08/04/23 - 22/04/23")
             .withNumberOfGuests("1").withIsRoomClean("no")
-            .withRequests("I wanna early checkin")
+            .withRequests("I wanna food").withBill("100")
             .build();
     public static final Guest FIONA = new GuestBuilder().withName("Fiona Kunz").withPhone("9482427")
             .withEmail("lydia@example.com").withDateRange("21/10/22 - 22/10/22")
             .withNumberOfGuests("2").withIsRoomClean("no")
-            .withRequests("I wanna early checkout")
+            .withRequests("I wanna food").withBill("999.99")
             .build();
     public static final Guest GEORGE = new GuestBuilder().withName("George Best").withPhone("9482442")
             .withEmail("anna@example.com").withDateRange("01/01/23 - 07/01/23")
             .withNumberOfGuests("3").withIsRoomClean("yes")
-            .withRequests("hello")
+            .withRequests("I wanna food").withBill("1000.01")
             .build();
 
     // Manually added
     public static final Guest HOON = new GuestBuilder().withName("Hoon Meier").withPhone("8482424")
             .withEmail("stefan@example.com").withDateRange("01/05/23 - 01/01/24")
             .withNumberOfGuests("1").withIsRoomClean("no")
-            .withRequests("can I get one more bed")
+            .withRequests("can I get one more bed").withBill("6969.96")
             .build();
+
     public static final Guest IDA = new GuestBuilder().withName("Ida Mueller").withPhone("8482131")
             .withEmail("hans@example.com").withDateRange("11/11/23 - 12/11/23")
             .withNumberOfGuests("4").withIsRoomClean("yes")
-            .withRequests("I want to sleep with HOON")
+            .withRequests("I want to sleep with HOON").withBill("99999")
             .build();
 
     // Manually added - Guest's details found in {@code CommandTestUtil}
@@ -83,6 +84,7 @@ public class TypicalGuests {
             .withIsRoomClean(VALID_IS_ROOM_CLEAN_AMY)
             .withRequests(VALID_REQUEST_AMY)
             .build();
+            
     public static final Guest BOB = new GuestBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
             .withEmail(VALID_EMAIL_BOB).withDateRange(VALID_DATE_RANGE_BOB)
             .withNumberOfGuests(VALID_NUMBER_OF_GUESTS_BOB)

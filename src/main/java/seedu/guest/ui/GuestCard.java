@@ -41,6 +41,8 @@ public class GuestCard extends UiPart<Region> {
     private Label isRoomClean;
     @FXML
     private Label request;
+    @FXML
+    private Label bill;
 
     /**
      * Creates a {@code GuestCode} with the given {@code Guest} and index to display.
@@ -56,6 +58,7 @@ public class GuestCard extends UiPart<Region> {
         numberOfGuests.setText("No. of Guests: " + guest.getNumberOfGuests().value);
         isRoomClean.setText("Room Cleaned: " + guest.getIsRoomClean().value);
         request.setText("Guest Request: " + guest.getRequests().requests);
+        bill.setText("Bill: " + guest.getBill().value);
     }
 
     @Override

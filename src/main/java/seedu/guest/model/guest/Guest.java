@@ -21,13 +21,14 @@ public class Guest {
     private final NumberOfGuests numberOfGuests;
     private final IsRoomClean isRoomClean;
     private final Request request;
+    private final Bill bill;
 
     /**
      * Every field must be present and not null.
      */
     public Guest(Name name, Phone phone, Email email, DateRange dateRange,
-                 NumberOfGuests numberOfGuests, IsRoomClean isRoomClean, Request request) {
-        requireAllNonNull(name, phone, email, dateRange, numberOfGuests, isRoomClean);
+                 NumberOfGuests numberOfGuests, IsRoomClean isRoomClean, Bill bill, Request request) {
+        requireAllNonNull(name, phone, email, dateRange, numberOfGuests, isRoomClean, bill);
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -35,6 +36,7 @@ public class Guest {
         this.numberOfGuests = numberOfGuests;
         this.isRoomClean = isRoomClean;
         this.request = request;
+        this.bill = bill;
     }
 
     public Name getName() {
@@ -63,6 +65,10 @@ public class Guest {
 
     public Request getRequests() {
         return request;
+    }
+    
+    public Bill getBill() {
+        return bill;
     }
 
     /**
@@ -101,12 +107,13 @@ public class Guest {
                 && otherGuest.getNumberOfGuests().equals(getNumberOfGuests())
                 && otherGuest.getIsRoomClean().equals(getIsRoomClean())
                 && otherGuest.getRequests().equals(getRequests());
+                && otherGuest.getBill().equals(getBill());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, dateRange, numberOfGuests, isRoomClean, request);
+        return Objects.hash(name, phone, email, dateRange, numberOfGuests, isRoomClean, bill, request);
     }
 
     @Override
@@ -125,6 +132,8 @@ public class Guest {
                 .append(getIsRoomClean())
                 .append("; Guest Request: ")
                 .append(getRequests());
+                .append("; Bill: ")
+                .append(getBill());
 
         return builder.toString();
     }
