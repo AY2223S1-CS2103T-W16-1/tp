@@ -7,7 +7,7 @@ import static seedu.guest.commons.util.AppUtil.checkArgument;
  */
 public class Request {
     public static final String MESSAGE_CONSTRAINTS = "Request should not be blank";
-    public String requests;
+    public final String requests;
 
     /**
      * The constructor of request.
