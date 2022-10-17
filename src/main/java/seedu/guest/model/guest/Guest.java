@@ -66,7 +66,7 @@ public class Guest {
     public Request getRequests() {
         return request;
     }
-    
+
     public Bill getBill() {
         return bill;
     }

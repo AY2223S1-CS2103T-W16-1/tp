@@ -84,7 +84,7 @@ public class TypicalGuests {
             .withIsRoomClean(VALID_IS_ROOM_CLEAN_AMY)
             .withRequests(VALID_REQUEST_AMY)
             .build();
-            
+
     public static final Guest BOB = new GuestBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
             .withEmail(VALID_EMAIL_BOB).withDateRange(VALID_DATE_RANGE_BOB)
             .withNumberOfGuests(VALID_NUMBER_OF_GUESTS_BOB)

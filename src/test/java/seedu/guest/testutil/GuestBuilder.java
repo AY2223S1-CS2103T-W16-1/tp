@@ -125,8 +125,7 @@ public class GuestBuilder {
     }
 
     public Guest build() {
-        return new Guest(name, phone, email, dateRange, numberOfGuests, 
-            isRoomClean, bill, request);
+        return new Guest(name, phone, email, dateRange, numberOfGuests, isRoomClean, bill, request);
     }
 
 }
