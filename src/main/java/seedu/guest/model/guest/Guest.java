@@ -99,14 +99,16 @@ public class Guest {
 
 
         Guest otherGuest = (Guest) other;
-        return otherGuest.getName().equals(getName())
+        return (otherGuest.getName().equals(getName())
                 && otherGuest.getPhone().equals(getPhone())
                 && otherGuest.getEmail().equals(getEmail())
                 && otherGuest.getDateRange().equals(getDateRange())
                 && otherGuest.getNumberOfGuests().equals(getNumberOfGuests())
                 && otherGuest.getIsRoomClean().equals(getIsRoomClean())
                 && otherGuest.getRequests().equals(getRequests())
-                && otherGuest.getBill().equals(getBill());
+                && otherGuest.getBill().equals(getBill()))
+                ||
+                (otherGuest.toString().equals(toString()));
     }
 
     @Override

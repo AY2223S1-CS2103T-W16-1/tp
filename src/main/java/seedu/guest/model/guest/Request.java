@@ -6,14 +6,14 @@ import static seedu.guest.commons.util.AppUtil.checkArgument;
  * Class Request.
  */
 public class Request {
-    public static final String MESSAGE_CONSTRAINTS = "Request should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "The Request cannot be blank";
     public final String requests;
 
     /**
      * There are no request.
      */
     public Request() {
-        requests = "";
+        requests = "Nothing";
     }
 
     /**
@@ -21,7 +21,6 @@ public class Request {
      * @param request
      */
     public Request(String request) {
-        checkArgument(isValidRequests(request), MESSAGE_CONSTRAINTS);
         this.requests = request;
     }
 

@@ -20,7 +20,7 @@ public class GuestBuilder {
     public static final String DEFAULT_DATE_RANGE = "13/09/22 - 15/09/22";
     public static final String DEFAULT_NUMBER_OF_GUESTS = "1";
     public static final String DEFAULT_IS_ROOM_CLEAN = "yes";
-    public static final String DEFAULT_REQUESTS = "Room service";
+    public static final String DEFAULT_REQUEST = "Nothing";
     public static final String DEFAULT_BILL = "0.00";
 
     private Name name;
@@ -42,7 +42,7 @@ public class GuestBuilder {
         dateRange = new DateRange(DEFAULT_DATE_RANGE);
         numberOfGuests = new NumberOfGuests(DEFAULT_NUMBER_OF_GUESTS);
         isRoomClean = new IsRoomClean(DEFAULT_IS_ROOM_CLEAN);
-        request = new Request(DEFAULT_REQUESTS);
+        request = new Request(DEFAULT_REQUEST);
         bill = new Bill(DEFAULT_BILL);
     }
 

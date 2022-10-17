@@ -39,8 +39,8 @@ public class CommandTestUtil {
     public static final String VALID_NUMBER_OF_GUESTS_BOB = "2";
     public static final String VALID_IS_ROOM_CLEAN_AMY = "yes";
     public static final String VALID_IS_ROOM_CLEAN_BOB = "no";
-    public static final String VALID_REQUEST_AMY = "I want to have one more room clean";
-    public static final String VALID_REQUEST_BOB = "I wanna order a room service";
+    public static final String VALID_REQUEST_AMY = "Nothing";
+    public static final String VALID_REQUEST_BOB = "Nothing";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -54,9 +54,6 @@ public class CommandTestUtil {
     public static final String NUMBER_OF_GUESTS_DESC_BOB = " " + PREFIX_NUMBER_OF_GUESTS + VALID_NUMBER_OF_GUESTS_BOB;
     public static final String IS_ROOM_CLEAN_DESC_AMY = " " + PREFIX_IS_ROOM_CLEAN + VALID_IS_ROOM_CLEAN_AMY;
     public static final String IS_ROOM_CLEAN_DESC_BOB = " " + PREFIX_IS_ROOM_CLEAN + VALID_IS_ROOM_CLEAN_BOB;
-    public static final String REQUEST_DESC_AMY = " " + PREFIX_REQUESTS + VALID_REQUEST_AMY;
-    public static final String REQUEST_DESC_BOB = " " + PREFIX_REQUESTS + VALID_REQUEST_BOB;
-
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol

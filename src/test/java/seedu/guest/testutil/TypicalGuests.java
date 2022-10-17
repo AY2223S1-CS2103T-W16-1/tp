@@ -12,8 +12,6 @@ import static seedu.guest.logic.commands.CommandTestUtil.VALID_NUMBER_OF_GUESTS_
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_NUMBER_OF_GUESTS_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.guest.logic.commands.CommandTestUtil.VALID_REQUEST_AMY;
-import static seedu.guest.logic.commands.CommandTestUtil.VALID_REQUEST_BOB;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -82,14 +80,12 @@ public class TypicalGuests {
             .withEmail(VALID_EMAIL_AMY).withDateRange(VALID_DATE_RANGE_AMY)
             .withNumberOfGuests(VALID_NUMBER_OF_GUESTS_AMY)
             .withIsRoomClean(VALID_IS_ROOM_CLEAN_AMY)
-            .withRequests(VALID_REQUEST_AMY)
             .build();
 
     public static final Guest BOB = new GuestBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
             .withEmail(VALID_EMAIL_BOB).withDateRange(VALID_DATE_RANGE_BOB)
             .withNumberOfGuests(VALID_NUMBER_OF_GUESTS_BOB)
             .withIsRoomClean(VALID_IS_ROOM_CLEAN_BOB)
-            .withRequests(VALID_REQUEST_BOB)
             .build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
