@@ -3,7 +3,6 @@ package seedu.guest.model.guest;
 import static seedu.guest.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
-import java.util.Optional;
 
 /**
  * Represents a Guest in the guest book.

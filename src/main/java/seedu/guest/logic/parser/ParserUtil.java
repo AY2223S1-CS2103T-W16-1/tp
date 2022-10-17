@@ -124,6 +124,12 @@ public class ParserUtil {
         return new IsRoomClean(trimmedIsRoomClean);
     }
 
+    /**
+     * Parses a {@code String requests} into an {@code Request}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code request} is invalid.
+     */
     public static Request parseRequests(String requests) throws ParseException {
         requireNonNull(requests);
         String trimmedRequests = requests.trim();
