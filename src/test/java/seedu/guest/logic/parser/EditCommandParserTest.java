@@ -11,7 +11,6 @@ import static seedu.guest.logic.commands.CommandTestUtil.INVALID_IS_ROOM_CLEAN_D
 import static seedu.guest.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.guest.logic.commands.CommandTestUtil.INVALID_NUMBER_OF_GUESTS_DESC;
 import static seedu.guest.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
-import static seedu.guest.logic.commands.CommandTestUtil.INVALID_REQUEST_DESC;
 import static seedu.guest.logic.commands.CommandTestUtil.IS_ROOM_CLEAN_DESC_AMY;
 import static seedu.guest.logic.commands.CommandTestUtil.IS_ROOM_CLEAN_DESC_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.NAME_DESC_AMY;
@@ -19,8 +18,6 @@ import static seedu.guest.logic.commands.CommandTestUtil.NUMBER_OF_GUESTS_DESC_A
 import static seedu.guest.logic.commands.CommandTestUtil.NUMBER_OF_GUESTS_DESC_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.guest.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
-import static seedu.guest.logic.commands.CommandTestUtil.REQUEST_DESC_AMY;
-import static seedu.guest.logic.commands.CommandTestUtil.REQUEST_DESC_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_DATE_RANGE_AMY;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_DATE_RANGE_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
@@ -32,8 +29,6 @@ import static seedu.guest.logic.commands.CommandTestUtil.VALID_NUMBER_OF_GUESTS_
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_NUMBER_OF_GUESTS_BOB;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.guest.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.guest.logic.commands.CommandTestUtil.VALID_REQUEST_AMY;
-import static seedu.guest.logic.commands.CommandTestUtil.VALID_REQUEST_BOB;
 import static seedu.guest.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.guest.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.guest.testutil.TypicalIndexes.INDEX_FIRST_GUEST;
@@ -51,7 +46,6 @@ import seedu.guest.model.guest.IsRoomClean;
 import seedu.guest.model.guest.Name;
 import seedu.guest.model.guest.NumberOfGuests;
 import seedu.guest.model.guest.Phone;
-import seedu.guest.model.guest.Request;
 import seedu.guest.testutil.EditGuestDescriptorBuilder;
 
 public class EditCommandParserTest {
